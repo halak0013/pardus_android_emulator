@@ -47,7 +47,7 @@ class Commands:
                 yes "" | avdmanager -v create avd --name "{self.avd_name}" --package "{self.toolname}"
                 '''
         else:
-            return f'exec emulator -netfast -writable-system -data $HOME/.android-emulator/userdata/{self.avd_name}.img  -avd "{self.avd_name}" -qemu -cpu host'
+            return f'exec emulator -netfast -writable-system -data $HOME/.android-emulator/userdata/{self.avd_name}/{self.avd_name}.img  -avd "{self.avd_name}" -feature -Vulkan -qemu -cpu host'
     
     def __init__(self):
         pass
