@@ -77,9 +77,9 @@ class Proceses:
             shutil.rmtree(f"{co.HOME}/.android-emulator/avd/{name}.avd")
             os.remove(f"{co.HOME}/.android-emulator/avd/{name}.ini")
 
-        if os.path.exists(f"{co.HOME}/.android-emulator/userdata/{name}.img"):
-            os.remove(f"{co.HOME}/.android-emulator/userdata/{name}.img")
-            os.remove(f"{co.HOME}/.android-emulator/userdata/{name}.img.qcow2")
+        if os.path.exists(f"{co.HOME}/.android-emulator/userdata/{name}"):
+            shutil.rmtree(f"{co.HOME}/.android-emulator/userdata/{name}")
+            
 
     def go_to_page(self, page):
         GLib.idle_add(self.change_stack_page, page)
