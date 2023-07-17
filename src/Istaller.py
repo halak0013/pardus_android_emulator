@@ -61,6 +61,9 @@ class Installer:
         del comand_runner
 
     def fill_android_sdk(self, output):
+        self.gv_list = []
+        self.g_list = []
+        self.n_list = []
         lst = output.strip().split("\n")
         for e in lst:
             e = e.split()[0]
@@ -98,6 +101,7 @@ class Installer:
 
     def intall_system_image(self, datas: dict,fn_up):
         co.avd_name = datas["name"]
+        os.mkdir(f"{co.HOME}/.android-emulator/userdata/{co.avd_name}")
         comand_runner = CommandRunner(
             co.get_android_comand(True), self.lb_subpro_output, self.lb_wait_status, 
             fun_with_paramaters=[
