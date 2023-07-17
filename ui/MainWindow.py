@@ -76,6 +76,7 @@ class MainWindow(Gtk.Window):
             Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         self.proceses.get_init_variables([self.fill_avd_list, self.fill_properties])
         self.fill_cpu_cores()
+        self.active_button(True)
 
 
     def defineComponents(self):
@@ -233,6 +234,15 @@ class MainWindow(Gtk.Window):
                 self.lb_sd_card_p.set_text(str(datas["sd_card"]))
                 self.lb_gsm_p.set_text(str(datas["gsm_modem"]))
                 self.lb_cpu_p.set_text(datas["cpu_core"])
+    
+    def active_button(self,val:bool):
+        self.btn_new_virt_android.set_sensitive(val)
+        self.btn_edit.set_sensitive(val)
+        self.btn_delete.set_sensitive(val)
+        self.btn_start.set_sensitive(val)
+        self.btn_stop.set_sensitive(not val)
+        self.btn_force_stop.set_sensitive(not val)
+        
 
     def fill_cpu_cores(self):
         self.fill_cmb(self.cmb_cpu,range(1,os.cpu_count()+1))
@@ -278,13 +288,17 @@ class MainWindow(Gtk.Window):
         self.installer.get_andorio_list(None)
 
     def on_btn_force_stop_clicked(self, b):
-        pass
+        self.active_button(True)
+
 
     def on_btn_stop_clicked(self, b):
-        pass
+        self.active_button(True)
+
 
     def on_btn_start_clicked(self, b):
+        self.active_button(False)
         self.proceses.run_avd()
+
 
     def on_btn_edit_clicked(self, b):
         self.is_main = False
