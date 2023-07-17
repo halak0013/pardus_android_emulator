@@ -174,6 +174,17 @@ class MainWindow(Gtk.Window):
                 cmb.append_text(str(c))
         cmb.set_active(0)
 
+    def fill_avd_list(self, o):
+
+        for child in self.lst_virt_mach.get_children():
+            self.lst_virt_mach.remove(child)
+        for r in self.proceses.avd_lst:
+            print("r: ", r)
+            self.lst_virt_mach.add(Gtk.Label(label=r))
+        self.lst_virt_mach.show_all()
+        first_row = self.lst_virt_mach.get_row_at_index(0)
+        self.lst_virt_mach.select_row(first_row)
+
     def set_properties(self):
         res = {}
         res["ram"] = int(self.spn_ram.get_value())
@@ -190,18 +201,7 @@ class MainWindow(Gtk.Window):
         ) else "landscape"
         res["name"] = self.entry_name.get_text()
         return res
-
-    def fill_avd_list(self, o):
-
-        for child in self.lst_virt_mach.get_children():
-            self.lst_virt_mach.remove(child)
-        for r in self.proceses.avd_lst:
-            print("r: ", r)
-            self.lst_virt_mach.add(Gtk.Label(label=r))
-        self.lst_virt_mach.show_all()
-        first_row = self.lst_virt_mach.get_row_at_index(0)
-        self.lst_virt_mach.select_row(first_row)
-
+    
     def fill_properties(self, o=None):
         if len(self.proceses.avd_lst) != 0:
             co.avd_name = self.lst_virt_mach.get_selected_row().get_child().get_text()
@@ -337,4 +337,6 @@ class MainWindow(Gtk.Window):
         self.stck_main.set_visible_child_name("box_set_properties")
 
     def destroy(self):
+        #TODO: çıkarken emulatör açık kalsın mı sor
+        self.proceses.stop_emulator()
         self.window.destroy()
