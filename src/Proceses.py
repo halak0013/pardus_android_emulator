@@ -33,7 +33,7 @@ class Proceses:
         with open(f"{co.HOME}/.android-emulator/avd/{co.avd_name}.avd/config.ini", "r") as file:
             lines = file.readlines()
             for line in lines:
-                if line.startswith("hw.keyboard ="):
+                if line.startswith(("hw.keyboard =","hw.keyboard=")):
                     datas['keyboard'] = self.get_true_false(line.split()[-1])
                 elif line.startswith("hw.ramSize"):
                     datas['ram'] = line.split()[-1]
@@ -64,6 +64,7 @@ class Proceses:
             return False
         
     def run_avd(self):
+        print(co.droidname,co.toolname,co.avd_name)
         comand_runner = CommandRunner(
             co.get_android_comand(False), self.lb_subpro_output, self.lb_wait_status, fun_with_paramaters=[
                 lambda: self.go_to_page("box_main")])

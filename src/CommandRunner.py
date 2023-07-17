@@ -30,6 +30,7 @@ class CommandRunner:
         )
 
         while self.is_thread_runnig:
+            print(self.is_thread_runnig)
             line = process.stdout.readline()
             if len(line) != 0:
                 self.output += line + '\n'

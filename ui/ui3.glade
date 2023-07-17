@@ -3,9 +3,9 @@
 <interface>
   <requires lib="gtk+" version="3.24"/>
   <object class="GtkAdjustment" id="density">
-    <property name="lower">100</property>
+    <property name="lower">120</property>
     <property name="upper">1000</property>
-    <property name="value">100</property>
+    <property name="value">160</property>
     <property name="step-increment">1</property>
     <property name="page-increment">10</property>
   </object>
@@ -1243,7 +1243,6 @@ June 2014.</property>
                       <object class="GtkComboBoxText" id="cmb_sdk_v">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <signal name="changed" handler="on_cmb_sdk_v_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>

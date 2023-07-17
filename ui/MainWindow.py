@@ -244,6 +244,15 @@ class MainWindow(Gtk.Window):
     def fill_cpu_cores(self):
         self.fill_cmb(self.cmb_cpu, range(1, os.cpu_count()+1))
 
+    def fill_sdks(self,index=0):
+        if index == 0:
+            self.fill_cmb(self.cmb_sdk_v, self.installer.gv_list, True)
+            co.toolname = self.installer.gv_list[index]
+        elif index == 1:
+            self.fill_cmb(self.cmb_sdk_v, self.installer.g_list, True)
+        elif index == 2:
+            self.fill_cmb(self.cmb_sdk_v, self.installer.n_list, True)
+
     def on_btn_about_clicked(self, b):
         self.dialog_about.set_visible(True)
 
@@ -257,25 +266,14 @@ class MainWindow(Gtk.Window):
 
     def on_cmb_device_type_changed(self, c: Gtk.ComboBox):
         index = c.get_active()
-        if index == 0:
-            self.fill_cmb(self.cmb_sdk_v, self.installer.gv_list, True)
-            co.toolname = self.installer.gv_list[index]
-        elif index == 1:
-            self.fill_cmb(self.cmb_sdk_v, self.installer.g_list, True)
-            co.toolname = self.installer.g_list[index]
-        elif index == 2:
-            self.fill_cmb(self.cmb_sdk_v, self.installer.n_list, True)
-            co.toolname = self.installer.n_list[index]
-        co.droidname = co.toolname.split(";")[1]
+        self.fill_sdks(index)
+
 
     def on_chk_btn_term_accept_toggled(self, b):
         if b.get_active():
             self.btn_sdkm_yes.set_sensitive(True)
         else:
             self.btn_sdkm_yes.set_sensitive(False)
-
-    def on_cmb_sdk_v_changed(self, c):
-        pass
 
     def on_btn_new_virt_android_clicked(self, b):
         self.is_main = True
@@ -326,6 +324,16 @@ class MainWindow(Gtk.Window):
             self.stck_main.set_visible_child_name("box_main")
 
     def on_btn_and_chose_next_clicked(self, b):
+        index =self.cmb_device_type.get_active()
+        index2=self.cmb_sdk_v.get_active()
+        if index == 0:
+            co.toolname = self.installer.gv_list[index2]
+        elif index == 1:
+            co.toolname = self.installer.g_list[index2]
+        elif index == 2:
+            co.toolname = self.installer.n_list[index2]
+        co.droidname = co.toolname.split(";")[1]
+        print(co.toolname, co.droidname)
         self.stck_main.set_visible_child_name("box_set_properties")
 
     def destroy(self):

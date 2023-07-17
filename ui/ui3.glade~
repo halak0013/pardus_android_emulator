@@ -1052,6 +1052,8 @@ June 2014.</property>
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="halign">center</property>
+                <property name="margin-top">7</property>
+                <property name="margin-bottom">7</property>
                 <property name="spacing">11</property>
                 <child>
                   <object class="GtkButton" id="btn_new_virt_android">
@@ -1241,7 +1243,6 @@ June 2014.</property>
                       <object class="GtkComboBoxText" id="cmb_sdk_v">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <signal name="changed" handler="on_cmb_sdk_v_changed" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">False</property>

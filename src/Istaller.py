@@ -116,7 +116,7 @@ class Installer:
 
             new_lines = []
             for line in lines:
-                if line.startswith("hw.keyboard ="):
+                if line.startswith(("hw.keyboard =","hw.keyboard=")):
                     line = f"hw.keyboard = {self.get_yes_no(datas['keyboard'])}\n"
                 elif line.startswith("hw.mainKeys"):
                     line = "hw.mainKeys = no\n"
@@ -155,6 +155,8 @@ class Installer:
                 new_lines.append(line)
 
             with open(f"{co.HOME}/.android-emulator/avd/{co.avd_name}.avd/config.ini", "w") as file:
+                file.writelines(new_lines)
+            with open(f"{co.HOME}/.android-emulator/avd/{co.avd_name}.avd/hardware-qemu.ini", "w") as file:
                 file.writelines(new_lines)
 
     def get_yes_no(self, val):
