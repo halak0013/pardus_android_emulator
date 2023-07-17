@@ -147,9 +147,9 @@ class Installer:
                 elif line.startswith("hw.lcd.density"):
                     line = f"hw.lcd.density = {datas['density']}\n"
                 elif line.startswith("fastboot.forceColdBoot"):
-                    line = f"fastboot.forceColdBoot = no\n"
+                    line = f"fastboot.forceColdBoot = yes\n"
                 elif line.startswith("fastboot.forceFastBoot"):
-                    line = f"fastboot.forceFastBoot = yes\n"
+                    line = f"fastboot.forceFastBoot = no\n"
                 elif line.startswith("disk.cachePartition ="):
                     line = f"disk.cachePartition = no\n"
                 new_lines.append(line)
