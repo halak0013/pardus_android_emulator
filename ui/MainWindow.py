@@ -67,17 +67,15 @@ class MainWindow(Gtk.Window):
         self.dialog_sdkm.set_modal(True)
         self.btn_sdkm_yes.set_sensitive(False)
 
-
-
         self.fill_cmb(self.cmb_device_type, ['With Google and Play Store',
                                              'With Google without Play Store',
                                              'Without Google and Play Store'])
         self.scr_window.set_policy(
             Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
-        self.proceses.get_init_variables([self.fill_avd_list, self.fill_properties])
+        self.proceses.get_init_variables(
+            [self.fill_avd_list, self.fill_properties])
         self.fill_cpu_cores()
         self.active_button(True)
-
 
     def defineComponents(self):
         self.btn_about: Gtk.Button = self.builder.get_object("btn_about")
@@ -194,7 +192,7 @@ class MainWindow(Gtk.Window):
         return res
 
     def fill_avd_list(self, o):
-        
+
         for child in self.lst_virt_mach.get_children():
             self.lst_virt_mach.remove(child)
         for r in self.proceses.avd_lst:
@@ -207,13 +205,14 @@ class MainWindow(Gtk.Window):
     def fill_properties(self, o=None):
         if len(self.proceses.avd_lst) != 0:
             co.avd_name = self.lst_virt_mach.get_selected_row().get_child().get_text()
-            print(co.avd_name,"****")
+            print(co.avd_name, "****")
             datas = self.proceses.get_configuration()
             if not self.is_main:
                 self.entry_name.set_text(co.avd_name)
                 self.spn_ram.set_value(float(datas["ram"][:-1]))
                 self.spn_disk.set_value(float(datas["disk"][:-1]))
-                self.spn_display_height.set_value(float(datas["display_height"]))
+                self.spn_display_height.set_value(
+                    float(datas["display_height"]))
                 self.spn_display_width.set_value(float(datas["display_width"]))
                 self.spn_density.set_value(float(datas["density"]))
                 self.chk_keyboard.set_active((datas["keyboard"]))
@@ -234,19 +233,16 @@ class MainWindow(Gtk.Window):
                 self.lb_sd_card_p.set_text(str(datas["sd_card"]))
                 self.lb_gsm_p.set_text(str(datas["gsm_modem"]))
                 self.lb_cpu_p.set_text(datas["cpu_core"])
-    
-    def active_button(self,val:bool):
+
+    def active_button(self, val: bool):
         self.btn_new_virt_android.set_sensitive(val)
         self.btn_edit.set_sensitive(val)
         self.btn_delete.set_sensitive(val)
         self.btn_start.set_sensitive(val)
         self.btn_stop.set_sensitive(not val)
-        self.btn_force_stop.set_sensitive(not val)
-        
 
     def fill_cpu_cores(self):
-        self.fill_cmb(self.cmb_cpu,range(1,os.cpu_count()+1))
-
+        self.fill_cmb(self.cmb_cpu, range(1, os.cpu_count()+1))
 
     def on_btn_about_clicked(self, b):
         self.dialog_about.set_visible(True)
@@ -281,7 +277,6 @@ class MainWindow(Gtk.Window):
     def on_cmb_sdk_v_changed(self, c):
         pass
 
-
     def on_btn_new_virt_android_clicked(self, b):
         self.is_main = True
         self.entry_name.set_sensitive(True)
@@ -289,16 +284,15 @@ class MainWindow(Gtk.Window):
 
     def on_btn_force_stop_clicked(self, b):
         self.active_button(True)
-
+        self.proceses.stop_emulator()
 
     def on_btn_stop_clicked(self, b):
         self.active_button(True)
-
+        self.proceses.stop_emulator()
 
     def on_btn_start_clicked(self, b):
         self.active_button(False)
         self.proceses.run_avd()
-
 
     def on_btn_edit_clicked(self, b):
         self.is_main = False
@@ -306,12 +300,10 @@ class MainWindow(Gtk.Window):
         self.fill_properties()
         self.stck_main.set_visible_child_name("box_set_properties")
 
-
-
     def on_btn_delete_clicked(self, b):
         self.proceses.delete_avd()
-        self.proceses.get_init_variables([self.fill_avd_list, self.fill_properties])
-
+        self.proceses.get_init_variables(
+            [self.fill_avd_list, self.fill_properties])
 
     def on_lst_virt_mach_row_activated(self, list_box, row):
         selected_label = row.get_child()
@@ -321,17 +313,17 @@ class MainWindow(Gtk.Window):
         self.fill_properties()
 
     def on_btn_set_pro_next_clicked(self, b):
-        if self.is_main:# ? sdk ile yeni oluştur
+        if self.is_main:  # ? sdk ile yeni oluştur
             self.stck_main.set_visible_child_name("box_wait")
-            self.installer.intall_system_image(self.set_properties(),fn_up=[
-                lambda: self.proceses.get_init_variables([self.fill_avd_list, self.fill_properties])
+            self.installer.intall_system_image(self.set_properties(), fn_up=[
+                lambda: self.proceses.get_init_variables(
+                    [self.fill_avd_list, self.fill_properties])
             ])
-        else:# ? düzenleme
-            self.is_main=True
+        else:  # ? düzenleme
+            self.is_main = True
             self.installer.set_configuration(self.set_properties())
             self.fill_properties()
             self.stck_main.set_visible_child_name("box_main")
-
 
     def on_btn_and_chose_next_clicked(self, b):
         self.stck_main.set_visible_child_name("box_set_properties")

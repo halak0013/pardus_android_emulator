@@ -6,6 +6,7 @@ class Commands:
     # ? envirolnments
     HOME = os.path.expanduser("~")
     SDK=HOME+"/.android-emulator/sdk"
+    ADB=SDK+"/platform-tools/adb"
     env = os.environ.copy()
     env["ANDROID_SDK_ROOT"] = SDK
     env["ANDROID_EMULATOR_HOME"] = HOME+"/.android-emulator/emulator"
@@ -23,7 +24,6 @@ class Commands:
     cmd_install_sdk_maanger=f"yes | sdkmanager --channel=0 --sdk_root={SDK} tools"
     cmd_system_image=f'sdkmanager --sdk_root={SDK} --list | grep "$(uname -m)" | grep "android-[0-9]*;"'
 
-    #TODO: toolname ve droid nameyi unutma
 
     toolname="" #? system-images;android-34;google_apis;x86_64
     droidname="" #? android-34
@@ -34,6 +34,9 @@ class Commands:
     '''
     avd_edit=f'yes "" | avdmanager -v create avd --name "$droidname" --package "${toolname}"'
     avd_lst_c="emulator -list-avds"
+
+    adb_kill=f"{ADB} devices | grep emulator | cut -f1 | while read line; do {ADB} -s $line emu kill; done"
+
     @classmethod
     def get_android_comand(self,ins=False):
         comand=""

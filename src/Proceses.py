@@ -85,3 +85,10 @@ class Proceses:
 
     def change_stack_page(self,page):
         self.chalge_stack_page.set_visible_child_name(page)
+
+    def stop_emulator(self):
+        print(co.adb_kill)
+        comand_runner = CommandRunner(
+            co.adb_kill, self.lb_subpro_output, self.lb_wait_status)
+        comand_runner.run()
+        del comand_runner
