@@ -61,10 +61,10 @@ data_files = [
       "data/version"]),
 
     ("/usr/share/pardus/pardus-android-emulator/data/img",
-     ["data/edit.png",
-      "data/main.png",
-      "data/new_device.png",
-      "data/phone.png",
+     ["data/img/edit.png",
+      "data/img/main.png",
+      "data/img/new_device.png",
+      "data/img/phone.png",
       ]),
 ] + genereate_mo_files()
 
