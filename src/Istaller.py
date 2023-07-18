@@ -160,8 +160,8 @@ class Installer:
 
             with open(f"{co.HOME}/.android-emulator/avd/{co.avd_name}.avd/config.ini", "w") as file:
                 file.writelines(new_lines)
-            with open(f"{co.HOME}/.android-emulator/avd/{co.avd_name}.avd/hardware-qemu.ini", "w") as file:
-                file.writelines(new_lines)
+            #with open(f"{co.HOME}/.android-emulator/avd/{co.avd_name}.avd/hardware-qemu.ini", "w") as file:
+            #    file.writelines(new_lines)
 
     def get_yes_no(self, val):
         if val:

@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Pardus Andorid Emulator
+Name[tr]=Pardus Android Emülatörü
+GenericName=Pardus Andorid Emulator
+GenericName[tr]=Pardus Android Emülatörü
+Comment=Generate an Android Emulator easily.
+Comment[tr]=Kolayca Android Emulatör oluşturun
+Exec=pardus-android-emulator
+Icon=pardus-android-emulator
+Terminal=false
+Type=Application
+Categories=GTK;System;PackageManager;
+StartupNotify=true
+Keywords=android;emulator;pardus;

@@ -1,0 +1,84 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+from setuptools import setup, find_packages
+import os
+import subprocess
+
+
+def genereate_mo_files():
+    podir = "po"
+    mo = []
+    for po in os.listdir(podir):
+        if po.endswith(".po"):
+            os.makedirs("{}/{}/LC_MESSAGES".format(podir,
+                        po.split(".po")[0]), exist_ok=True)
+            mo_file = "{}/{}/LC_MESSAGES/{}".format(
+                podir, po.split(".po")[0], "pardus-android-emulator.mo")
+            msgfmt_cmd = 'msgfmt {} -o {}'.format(podir + "/" + po, mo_file)
+            subprocess.call(msgfmt_cmd, shell=True)
+            mo.append(("/usr/share/locale/" + po.split(".po")[0] + "/LC_MESSAGES",
+                       ["po/" + po.split(".po")[0] + "/LC_MESSAGES/pardus-android-emulator.mo"]))
+    return mo
+
+
+changelog = "debian/changelog"
+if os.path.exists(changelog):
+    head = open(changelog).readline()
+    try:
+        version = head.split("(")[1].split(")")[0]
+    except:
+        print("debian/changelog format is wrong for get version")
+        version = "0.0.0"
+    f = open("data/version", "w")
+    f.write(version)
+    f.close()
+
+data_files = [
+    ("/usr/bin", ["pardus-android-emulator"]),
+
+    ("/usr/share/applications",
+     ["tr.org.pardus.android.emulator.desktop"]),
+
+    ("/usr/share/pardus/pardus-android-emulator",
+     ["main.py"]),
+
+    ("/usr/share/pardus/pardus-android-emulator/ui",
+     ["ui/ui3.glade",
+      "ui/MainWindow.py"]),
+
+    ("/usr/share/pardus/pardus-android-emulator/src",
+     ["src/AsyncFileDownloader.py",
+      "src/CommandRunner.py",
+      "src/Istaller.py",
+      "src/Proceses.py"]),
+
+    ("/usr/share/pardus/pardus-android-emulator/src/static",
+     ["src/static/comands.py"]),
+
+    ("/usr/share/pardus/pardus-android-emulator/data",
+     ["data/logo.svg",
+      "data/version"]),
+
+    ("/usr/share/pardus/pardus-android-emulator/data/img",
+     ["data/edit.png",
+      "data/main.png",
+      "data/new_device.png",
+      "data/phone.png",
+      ]),
+] + genereate_mo_files()
+
+setup(
+    name="pardus-android-emulator",
+    version=version,
+    packages=find_packages(),
+    scripts=["pardus-android-emulator"],
+    install_requires=["PyGObject","beautifulsoup4","aiohttp"],
+    data_files=data_files,
+    author="Muhammet Halak",
+    author_email="halakmuhammet145@gmail.com",
+    description="Generate an Android Emulator easily",
+    license="GPLv3",
+    keywords="pardus-android-emulator, emulator, android, pardus",
+    url="https://github.com/halak0013/pardus_android_emulator",
+)

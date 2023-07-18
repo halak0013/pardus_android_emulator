@@ -22,5 +22,6 @@ cd $HOME/.android-emulator/sdk
 
 #mkdir -p $HOME/.android-emulator/userdata/
 
-exec emulator -netfast -writable-system -data $HOME/.android-emulator/userdata/test5.img  -avd "test5" -qemu -cpu host 
-#emulator -help
+#exec emulator -netfast -writable-system -data $HOME/.android-emulator/userdata/test571.img  -avd "test571" -feature -Vulkan -qemu 
+#emulator -netfast -writable-system -data $HOME/.android-emulator/userdata/armut/armut.img  -avd "armut" -feature -Vulkan -qemu 
+emulator -memory 4096 "armut"

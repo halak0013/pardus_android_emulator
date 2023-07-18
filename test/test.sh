@@ -14,7 +14,7 @@ export PATH=$HOME/.android-emulator/sdk/emulator:$PATH
 #export PATH=$HOME/.android-emulator/jdk-18/bin:$PATH
 
 
-cd $HOME/.android-emulator/sdk
+#cd $HOME/.android-emulator/sdk
 
 emulator -list-avds
 echo "*****"
@@ -26,3 +26,5 @@ echo "*****"
 #/home/bismih/.android-emulator/sdk/platform-tools/adb kill-server
 #/home/bismih/.android-emulator/sdk/platform-tools/adb devices | grep emulator | cut -f1 | while read line; do /home/bismih/.android-emulator/sdk/platform-tools/adb -s $line emu kill; done
 #/home/bismih/.android-emulator/sdk/platform-tools/adb -s emulator-5554 emu kill
+
+/home/bismih/.android-emulator/sdk/platform-tools/adb install termux-app_v0.118.0+github-debug_x86_64.apk

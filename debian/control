@@ -1,0 +1,23 @@
+Source: pardus-android-emulator
+Section: x11
+Priority: optional
+Maintainer: Muhammet Halak <halakmuhammet145@gmail.com>
+Build-Depends: debhelper-compat (= 13), dh-python, python3-all, python3-setuptools
+Standards-Version: 4.6.1
+Homepage: https://github.com/halak0013/pardus_android_emulator
+
+Package: pardus-android-emulator
+Architecture: all
+Depends: ${misc:Depends},
+         ${python3:Depends},
+         gir1.2-ayatanaappindicator3-0.1,
+         gir1.2-glib-2.0,
+         gir1.2-gtk-3.0,
+         python3-bs4,
+         python3-aiohttp
+Description: Pardus Android Emulator.
+ Generate an Android Emulator
+ Edit it,
+ Delete it,
+ Chose its sdk
+ with google or google and playstore or without google and playstore

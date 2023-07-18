@@ -67,9 +67,9 @@ class MainWindow(Gtk.Window):
         self.dialog_sdkm.set_modal(True)
         self.btn_sdkm_yes.set_sensitive(False)
 
-        self.fill_cmb(self.cmb_device_type, ['With Google and Play Store',
-                                             'With Google without Play Store',
-                                             'Without Google and Play Store'])
+        self.fill_cmb(self.cmb_device_type, [_('With Google and Play Store'),
+                                             _('With Google without Play Store'),
+                                             _('Without Google and Play Store')])
         self.scr_window.set_policy(
             Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         self.proceses.get_init_variables(
