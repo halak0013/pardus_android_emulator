@@ -1,2 +1,2 @@
 #!/bin/bash
-python3 /opt/pardus-android-emulator/main.py
+python3 /usr/share/pardus/pardus-android-emulator/main.py

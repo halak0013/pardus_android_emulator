@@ -3,17 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # Muhammet Halak <halakmuhammet145@gmail.com>
-#, 
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-18 15:30+0300\n"
+"POT-Creation-Date: 2023-07-18 20:15+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Muhammet Halak <halakmuhammet145@gmail.com>"
-"Language-Team: Turkish <dev@pardus.org.tr>\n"
+"Last-Translator: Muhammet Halak <halakmuhammet145@gmail.com>Language-Team: "
+"Turkish <dev@pardus.org.tr>\n"
 "Language: \n"
-"MIME-Version: 1.0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -50,7 +48,6 @@ msgstr "Evet"
 msgid ""
 "Your system dosn't have sdk manager. \n"
 "Do you want to install it?"
-
 msgstr ""
 "Sistemde sdk yöneticisi bulunmamaktadır. \n"
 "Yüklemek istiyor musunuz?"
@@ -907,3 +904,15 @@ msgstr "ozellikleri_ayarla_kutusu"
 #: ui/ui3.glade:2026
 msgid "Pardus Android Emulator"
 msgstr "Pardus Android Emülatörü"
+
+#: ui/MainWindow.py:70
+msgid "With Google and Play Store"
+msgstr "Google ve Play Store ile"
+
+#: ui/MainWindow.py:71
+msgid "With Google without Play Store"
+msgstr "Google olup Play Store olmadan"
+
+#: ui/MainWindow.py:72
+msgid "Without Google and Play Store"
+msgstr "Google ve Play Store olmadan"
