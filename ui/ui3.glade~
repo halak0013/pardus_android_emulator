@@ -449,16 +449,23 @@ June 2014.</property>
   </object>
   <object class="GtkAdjustment" id="displayH">
     <property name="lower">720</property>
-    <property name="upper">1080</property>
+    <property name="upper">1920</property>
     <property name="value">720</property>
     <property name="step-increment">1</property>
     <property name="page-increment">10</property>
   </object>
   <object class="GtkAdjustment" id="displayV">
     <property name="lower">720</property>
-    <property name="upper">1080</property>
+    <property name="upper">1920</property>
     <property name="value">720</property>
     <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="ram">
+    <property name="lower">2048</property>
+    <property name="upper">16384</property>
+    <property name="value">2048</property>
+    <property name="step-increment">100</property>
     <property name="page-increment">10</property>
   </object>
   <object class="GtkWindow" id="main_window">
@@ -2035,12 +2042,5 @@ June 2014.</property>
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkAdjustment" id="ram">
-    <property name="lower">2048</property>
-    <property name="upper">16384</property>
-    <property name="value">2048</property>
-    <property name="step-increment">100</property>
-    <property name="page-increment">10</property>
   </object>
 </interface>
