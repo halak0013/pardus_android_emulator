@@ -4,7 +4,7 @@ import zipfile
 import tarfile
 import os
 import shutil
-
+from time import sleep
 import gi
 gi.require_version('Gtk', '3.0')
 
@@ -34,6 +34,9 @@ class AsyncFileDownloader:
 
         async with aiohttp.ClientSession() as session:  # ? asenkron http isteklerini yönetiyor
             # ? urly bir get isteği atayoruz
+            w1=True
+            w2=True
+            w3=True
             async with session.get(self.url) as response:
                 self.file_size = int(response.headers.get('Content-Length', 0))
                 path = self.url.split('/')[-1] if path == None else path
@@ -43,7 +46,25 @@ class AsyncFileDownloader:
                         # ? içeriği 1 kb olarak okuyoz
                         chunk = await response.content.read(1024)
                         if not chunk:
+                            if w1:
+                                w1=False
+                                sleep(5)
+                                continue
+                            elif w2:
+                                w2=False
+                                sleep(5)
+                                continue
+                            elif w3:
+                                w3=False
+                                sleep(5)
+                                continue
+                            else:
+                                print("Network connection error")
+                                break
+                        
+                        if self.downloaded_size == self.file_size:
                             break
+                        
 
                         file.write(chunk)
                         self.downloaded_size += len(chunk)
