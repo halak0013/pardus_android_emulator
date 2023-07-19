@@ -38,7 +38,10 @@ data_files = [
     ("/usr/bin", ["pardus-android-emulator"]),
 
     ("/usr/share/applications",
-     ["tr.org.pardus.android.emulator.desktop"]),
+     ["tr.org.pardus.android.emulator.desktop"]),  # /usr/share/icons
+
+    ("/usr/share/icons",
+     ["data/logo.svg"]),  # 
 
     ("/usr/share/pardus/pardus-android-emulator",
      ["main.py"]),
@@ -73,7 +76,7 @@ setup(
     version=version,
     packages=find_packages(),
     scripts=["pardus-android-emulator"],
-    install_requires=["PyGObject","beautifulsoup4","aiohttp"],
+    install_requires=["PyGObject", "beautifulsoup4", "aiohttp"],
     data_files=data_files,
     author="Muhammet Halak",
     author_email="halakmuhammet145@gmail.com",

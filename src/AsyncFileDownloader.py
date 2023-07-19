@@ -19,14 +19,18 @@ class AsyncFileDownloader:
 
 
     # ? async bu fonksiyon asenkron
-    async def download_file(self, path, archive_file_path, extract_dir, lb_subpro_output, lb_dialog_wait_status):
-        GLib.timeout_add(200, self.update_label)
+    async def download_file(self, path, archive_file_path, extract_dir, lb_subpro_output, lb_dialog_wait_status,f_update=None):
+        #self.timer = GLib.timeout_add(3000, self.up_lb)
+        #GLib.idle_add(self.update_label)
+
         self.archive_file_path = archive_file_path
         self.extract_dir = extract_dir
         self.lb_subpro_output = lb_subpro_output
         self.lb_dialog_wait_status = lb_dialog_wait_status
         self.out_text = ""
         self.status_text = ""
+        self.f_update = f_update
+        self.is_downloaded = True
 
         async with aiohttp.ClientSession() as session:  # ? asenkron http isteklerini yönetiyor
             # ? urly bir get isteği atayoruz
@@ -43,32 +47,32 @@ class AsyncFileDownloader:
 
                         file.write(chunk)
                         self.downloaded_size += len(chunk)
-                        self.status_text = f"Downloaded size: {(self.downloaded_size/1048576):.2f}Mb"
+                        self.status_text = f"Downloaded size: {(self.downloaded_size/1048576)}Mb"
                         if self.file_size != 0:
                             self.status_text += f"  %{self.downloaded_size/self.file_size*100}"
                         self.out_text += "\n"+self.status_text
-
-                        #GLib.idle_add(self.update_label, self.out_text, self.status_text)
+                        print(self.status_text)
+                        #GLib.idle_add(self.update_label)
         print(self.downloaded_size, self.file_size)
         if self.downloaded_size == self.file_size:
             print("Download complete!")
             self.extract_file()
             self.move_files()
             self.install_sdkm()
+            print("dow 1")
             self.out_text = ""
             self.status_text = ""
-            self.is_contine=False
+            #GLib.source_remove(self.timer)
         else:
             print("Download failed!")
 
     def up_lb(self):
         GLib.idle_add(self.update_label)
-        pass
 
     def update_label(self):
         self.lb_subpro_output.set_text(self.out_text)
         self.lb_dialog_wait_status.set_text(self.status_text)
-        return self.is_contine
+        return self.is_thread_runnig
     
     def extract_file(self):
         self.out_text = ""
@@ -82,11 +86,11 @@ class AsyncFileDownloader:
                         zip_ref.extract(info, self.extract_dir)
                         extracted_count += 1
 
-                        status_text = f"Extracted size: {extracted_count:.2f}Mb"
+                        status_text = f"Extracted size: {extracted_count}Mb"
                         if self.file_size != 0:
                             status_text += f"  %{extracted_count / file_count * 100}"
                         self.out_text += "\n"+status_text
-                        #GLib.idle_add(self.update_label, self.out_text, status_text)
+                        #GLib.idle_add(self.update_label)
 
                 os.remove(self.archive_file_path)
                 print("arşiv dosyası başarıyla ayrıştırıldı.")
@@ -99,11 +103,11 @@ class AsyncFileDownloader:
                         tar_ref.extract(info, self.extract_dir)
                         extracted_count += 1
                         
-                        status_text = f"Extracted size: {extracted_count:.2f}Mb"
+                        status_text = f"Extracted size: {extracted_count}Mb"
                         if self.file_size != 0:
                             status_text += f"  %{extracted_count / file_count * 100}"
                         self.out_text += "\n"+status_text
-                        #GLib.idle_add(self.update_label, self.out_text, status_text)
+                        #GLib.idle_add(self.update_label)
 
                 os.remove(self.archive_file_path)
                 print("arşiv dosyası başarıyla ayrıştırıldı.")
@@ -132,4 +136,5 @@ class AsyncFileDownloader:
         os.rmdir(temp_dir)
 
     def install_sdkm(self):
-        pass
+        #GLib.source_remove(self.timer)
+        self.f_update()

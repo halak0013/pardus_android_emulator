@@ -19,7 +19,7 @@
 Ayrıntılar için &lt;a href="https://www.gnu.org/licenses/gpl-3.0.html"&gt;GNU Genel Kamu Lisansı, sürüm 3 ya da sonrası&lt;/a&gt; bağlantısına bakın.</property>
     <property name="authors">Muhammet Halak
 Ali Rıza</property>
-    <property name="logo">../data/logo.svg</property>
+    <property name="logo">../data/pardus-android-emulator.svg</property>
     <property name="wrap-license">True</property>
     <property name="license-type">gpl-3-0</property>
     <child internal-child="vbox">
@@ -53,7 +53,7 @@ Ali Rıza</property>
   <object class="GtkDialog" id="dialog_sdkm">
     <property name="can-focus">False</property>
     <property name="title" translatable="yes">sdk manager not in system</property>
-    <property name="icon">../data/logo.svg</property>
+    <property name="icon">../data/pardus-android-emulator.svg</property>
     <property name="type-hint">dialog</property>
     <child internal-child="vbox">
       <object class="GtkBox">
@@ -470,7 +470,7 @@ June 2014.</property>
   </object>
   <object class="GtkWindow" id="main_window">
     <property name="can-focus">False</property>
-    <property name="icon">../data/logo.svg</property>
+    <property name="icon">../data/pardus-android-emulator.svg</property>
     <child>
       <object class="GtkBox">
         <property name="visible">True</property>
@@ -1178,7 +1178,7 @@ June 2014.</property>
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="hexpand">False</property>
-                    <property name="pixbuf">../data/logo.svg</property>
+                    <property name="pixbuf">../data/pardus-android-emulator.svg</property>
                     <property name="icon_size">1</property>
                   </object>
                   <packing>

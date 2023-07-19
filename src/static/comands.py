@@ -21,7 +21,9 @@ class Commands:
     #env["LC_ALL=C"] = "C"
 
 
-    cmd_install_sdk_maanger=f"yes | sdkmanager --channel=0 --sdk_root={SDK} tools"
+    cmd_install_sdk_maanger=f'''yes | sdkmanager --channel=0 --sdk_root={SDK} tools
+chmod +x {SDK}/cmdline-tools/latest/bin/*
+    '''
     cmd_system_image=f'sdkmanager --sdk_root={SDK} --list | grep "$(uname -m)" | grep "android-[0-9]*;"'
 
 

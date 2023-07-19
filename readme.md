@@ -17,10 +17,17 @@ Yo can:
 
 ## Dependencies
 
-`sudo apt install adb`
-
 `pip install -r requirements.txt`
 
 # Runnig
 
 `python3 main.py`
+
+# Building
+
+```console
+sudo apt install devscripts git-buildpackage
+sudo mk-build-deps -ir
+gbp buildpackage --git-export-dir=/tmp/build/pardus-android-emulator -us -uc --git-ignore-branch --git-ignore-new
+
+```

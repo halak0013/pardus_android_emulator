@@ -174,7 +174,7 @@ class MainWindow(Gtk.Window):
                 cmb.append_text(str(c))
         cmb.set_active(0)
 
-    def fill_avd_list(self, o):
+    def fill_avd_list(self, o=None):
 
         for child in self.lst_virt_mach.get_children():
             self.lst_virt_mach.remove(child)
@@ -206,33 +206,35 @@ class MainWindow(Gtk.Window):
         if len(self.proceses.avd_lst) != 0:
             co.avd_name = self.lst_virt_mach.get_selected_row().get_child().get_text()
             print(co.avd_name, "****")
-            datas = self.proceses.get_configuration()
-            if not self.is_main:
-                self.entry_name.set_text(co.avd_name)
-                self.spn_ram.set_value(float(datas["ram"][:-1]))
-                self.spn_disk.set_value(float(datas["disk"][:-1]))
-                self.spn_display_height.set_value(
-                    float(datas["display_height"]))
-                self.spn_display_width.set_value(float(datas["display_width"]))
-                self.spn_density.set_value(float(datas["density"]))
-                self.chk_keyboard.set_active((datas["keyboard"]))
-                self.chk_gpu.set_active(datas["gpu"])
-                self.chk_sd_card.set_active(datas["sd_card"])
-                self.chk_gsm_modem.set_active(datas["gsm_modem"])
-                self.cmb_cpu.set_active(float(datas["cpu_core"])-1)
-                self.rd_btn_portrait.set_active(
-                    datas["orientation"] == "portrait")
-            else:
-                self.lb_ram_p.set_text(datas["ram"])
-                self.lb_disk_par_p.set_text(datas["disk"])
-                self.lb_hegiht_p.set_text(datas["display_height"])
-                self.lb_width_p.set_text(datas["display_width"])
-                self.lb_desity_p.set_text(datas["density"])
-                self.lb_keyboard_p.set_text(str(datas["keyboard"]))
-                self.lb_gpu_p.set_text(str(datas["gpu"]))
-                self.lb_sd_card_p.set_text(str(datas["sd_card"]))
-                self.lb_gsm_p.set_text(str(datas["gsm_modem"]))
-                self.lb_cpu_p.set_text(datas["cpu_core"])
+            if co.avd_name != "":
+                datas = self.proceses.get_configuration()
+                if not self.is_main:
+                    self.entry_name.set_text(co.avd_name)
+                    print(datas["ram"])
+                    self.spn_ram.set_value(float(datas["ram"][:-1]))
+                    self.spn_disk.set_value(float(datas["disk"][:-1]))
+                    self.spn_display_height.set_value(
+                        float(datas["display_height"]))
+                    self.spn_display_width.set_value(float(datas["display_width"]))
+                    self.spn_density.set_value(float(datas["density"]))
+                    self.chk_keyboard.set_active((datas["keyboard"]))
+                    self.chk_gpu.set_active(datas["gpu"])
+                    self.chk_sd_card.set_active(datas["sd_card"])
+                    self.chk_gsm_modem.set_active(datas["gsm_modem"])
+                    self.cmb_cpu.set_active(float(datas["cpu_core"])-1)
+                    self.rd_btn_portrait.set_active(
+                        datas["orientation"] == "portrait")
+                else:
+                    self.lb_ram_p.set_text(datas["ram"])
+                    self.lb_disk_par_p.set_text(datas["disk"])
+                    self.lb_hegiht_p.set_text(datas["display_height"])
+                    self.lb_width_p.set_text(datas["display_width"])
+                    self.lb_desity_p.set_text(datas["density"])
+                    self.lb_keyboard_p.set_text(str(datas["keyboard"]))
+                    self.lb_gpu_p.set_text(str(datas["gpu"]))
+                    self.lb_sd_card_p.set_text(str(datas["sd_card"]))
+                    self.lb_gsm_p.set_text(str(datas["gsm_modem"]))
+                    self.lb_cpu_p.set_text(datas["cpu_core"])
 
     def active_button(self, val: bool):
         self.btn_new_virt_android.set_sensitive(val)
@@ -265,8 +267,11 @@ class MainWindow(Gtk.Window):
         self.dialog_sdkm.set_visible(False)
 
     def on_cmb_device_type_changed(self, c: Gtk.ComboBox):
-        index = c.get_active()
-        self.fill_sdks(index)
+        try:
+            index = c.get_active()
+            self.fill_sdks(index)
+        except Exception as e:
+            print(e)
 
 
     def on_chk_btn_term_accept_toggled(self, b):
@@ -338,5 +343,6 @@ class MainWindow(Gtk.Window):
 
     def destroy(self):
         #TODO: çıkarken emulatör açık kalsın mı sor
-        self.proceses.stop_emulator()
+        if os.path.exists(co.SDK+"/cmdline-tools/latest/bin/sdkmanager"):
+            self.proceses.stop_emulator()
         self.window.destroy()

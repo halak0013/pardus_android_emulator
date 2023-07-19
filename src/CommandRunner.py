@@ -18,8 +18,6 @@ class CommandRunner:
         self.output = ""
 
     def run_command(self):
-        subprocess.run(
-            f"chmod +x {co.SDK}/cmdline-tools/latest/bin/sdkmanager", shell=True)
         process = subprocess.Popen(
             self.command,
             shell=True,
@@ -30,10 +28,11 @@ class CommandRunner:
         )
 
         while self.is_thread_runnig:
-            print(self.is_thread_runnig)
+            print("komut çalıştırıcı")
+            print(self.command)
             line = process.stdout.readline()
             if len(line) != 0:
-                self.output += line + '\n'
+                self.output += line #! burdadn hata verebilir bir ihtimal
             print("line: ", line, len(line))
             if not line:
                 self.output = self.output.replace('\n\n', '\n')

@@ -45,13 +45,11 @@ class Installer:
         asyncio.run(self.main())
 
     async def main(self):
-        await self.downloader.download_file("/tmp/cmdline-tools.zip", "/tmp/cmdline-tools.zip",
-                                            co.SDK, self.lb_subpro_output, self.lb_wait_status)
-        # ? install sdk manager
         comand_runner = CommandRunner(
             co.cmd_install_sdk_maanger, self.lb_subpro_output, self.lb_wait_status, fun_with_output=[self.get_andorio_list])
-        comand_runner.run()
-        del comand_runner
+        await self.downloader.download_file("/tmp/cmdline-tools.zip", "/tmp/cmdline-tools.zip",
+                                            co.SDK, self.lb_subpro_output, self.lb_wait_status,f_update=comand_runner.run)
+        # ? install sdk manager
         os.makedirs(co.HOME+"/.android-emulator/userdata/")
 
     def get_andorio_list(self, b):
@@ -64,16 +62,18 @@ class Installer:
         self.gv_list = []
         self.g_list = []
         self.n_list = []
+
         lst = output.strip().split("\n")
         for e in lst:
-            e = e.split()[0]
-            if "google" in e:
-                if "playstore" in e:
-                    self.gv_list.append(e)
+            if e!="":
+                e = e.split()[0]
+                if "google" in e:
+                    if "playstore" in e:
+                        self.gv_list.append(e)
+                    else:
+                        self.g_list.append(e)
                 else:
-                    self.g_list.append(e)
-            else:
-                self.n_list.append(e)
+                    self.n_list.append(e)
         print(self.n_list)
         GLib.idle_add(self.change_stack_page, "box_android_chose")
 
@@ -99,9 +99,9 @@ class Installer:
         return processed_data[0].get("href")
 
 
-    def intall_system_image(self, datas: dict,fn_up):
+    def intall_system_image(self, datas: dict,fn_up):#! burda hata olabilir
         co.avd_name = datas["name"]
-        os.mkdir(f"{co.HOME}/.android-emulator/userdata/{co.avd_name}")
+        os.makedirs(f"{co.HOME}/.android-emulator/userdata/{co.avd_name}")
         comand_runner = CommandRunner(
             co.get_android_comand(True), self.lb_subpro_output, self.lb_wait_status, 
             fun_with_paramaters=[
