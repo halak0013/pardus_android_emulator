@@ -2,18 +2,14 @@
 
 import sys
 import gi
-import os
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
-from ui.MainWindow import MainWindow
-from src.AsyncFileDownloader import AsyncFileDownloader
-from src.CommandRunner import CommandRunner
+from MainWindow import MainWindow
+from AsyncFileDownloader import AsyncFileDownloader
+from CommandRunner import CommandRunner
 
-#? it work on main path to find libs
-print(os.path.dirname(os.path.abspath(__file__)))
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 class Application(Gtk.Application):
     def __init__(self, *args, **kwargs):

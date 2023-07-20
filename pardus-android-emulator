@@ -1,2 +1,5 @@
-#!/bin/bash
-python3 /usr/share/pardus/pardus-android-emulator/main.py
+#!/usr/bin/python3
+
+import sys
+sys.path.insert(0, '/usr/share/pardus/pardus-android-emulator/src/')
+import Main

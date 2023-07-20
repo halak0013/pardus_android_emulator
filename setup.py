@@ -43,17 +43,16 @@ data_files = [
     ("/usr/share/icons",
      ["data/pardus-android-emulator.svg"]),  # 
 
-    ("/usr/share/pardus/pardus-android-emulator",
-     ["main.py"]),
 
     ("/usr/share/pardus/pardus-android-emulator/ui",
-     ["ui/ui3.glade",
-      "ui/MainWindow.py"]),
+     ["ui/MainWindow.glade"]),
 
     ("/usr/share/pardus/pardus-android-emulator/src",
      ["src/AsyncFileDownloader.py",
       "src/CommandRunner.py",
       "src/Istaller.py",
+      "src/MainWindow.py",
+      "src/Main.py",
       "src/Proceses.py"]),
 
     ("/usr/share/pardus/pardus-android-emulator/src/static",

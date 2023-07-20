@@ -7,7 +7,7 @@ import shutil
 from time import sleep
 import gi
 gi.require_version('Gtk', '3.0')
-from src.static.comands import Commands as co
+from static.comands import Commands as co
 
 
 class AsyncFileDownloader:

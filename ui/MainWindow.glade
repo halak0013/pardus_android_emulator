@@ -1203,8 +1203,6 @@ June 2014.</property>
                   <object class="GtkBox">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="margin-left">11</property>
-                    <property name="margin-right">11</property>
                     <property name="margin-start">11</property>
                     <property name="margin-end">11</property>
                     <property name="margin-top">11</property>
@@ -1285,13 +1283,41 @@ June 2014.</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="btn_and_chose_next">
-                        <property name="label" translatable="yes">Next</property>
+                      <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <property name="receives-default">True</property>
-                        <property name="margin-top">19</property>
-                        <signal name="clicked" handler="on_btn_and_chose_next_clicked" swapped="no"/>
+                        <property name="can-focus">False</property>
+                        <property name="halign">center</property>
+                        <property name="spacing">21</property>
+                        <child>
+                          <object class="GtkButton" id="btn_and_chose_back">
+                            <property name="label" translatable="yes">Back</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
+                            <property name="margin-top">19</property>
+                            <signal name="clicked" handler="on_btn_and_chose_back_clicked" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="btn_and_chose_next">
+                            <property name="label" translatable="yes">Next</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
+                            <property name="margin-top">19</property>
+                            <signal name="clicked" handler="on_btn_and_chose_next_clicked" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -1393,8 +1419,6 @@ June 2014.</property>
                   <object class="GtkBox">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="margin-left">10</property>
-                    <property name="margin-right">10</property>
                     <property name="margin-start">10</property>
                     <property name="margin-end">10</property>
                     <property name="margin-top">10</property>
@@ -1694,8 +1718,6 @@ June 2014.</property>
                   <object class="GtkBox">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="margin-left">10</property>
-                    <property name="margin-right">10</property>
                     <property name="margin-start">10</property>
                     <property name="margin-end">10</property>
                     <property name="margin-top">10</property>
@@ -1995,12 +2017,41 @@ June 2014.</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="btn_set_pro_next">
-                        <property name="label" translatable="yes">Next</property>
+                      <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <property name="receives-default">True</property>
-                        <signal name="clicked" handler="on_btn_set_pro_next_clicked" swapped="no"/>
+                        <property name="can-focus">False</property>
+                        <property name="halign">center</property>
+                        <property name="spacing">21</property>
+                        <child>
+                          <object class="GtkButton" id="btn_set_pro_back">
+                            <property name="label" translatable="yes">Back</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
+                            <property name="margin-top">19</property>
+                            <signal name="clicked" handler="on_btn_set_pro_back_clicked" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="btn_set_pro_next">
+                            <property name="label" translatable="yes">Next</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
+                            <property name="margin-top">19</property>
+                            <signal name="clicked" handler="on_btn_set_pro_next_clicked" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
                       </object>
                       <packing>
                         <property name="expand">False</property>

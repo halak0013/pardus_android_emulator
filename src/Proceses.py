@@ -1,6 +1,6 @@
 from gi.repository import GLib, Gtk
-from src.CommandRunner import CommandRunner
-from src.static.comands import Commands as co
+from CommandRunner import CommandRunner
+from static.comands import Commands as co
 
 import shutil,os
 import gi

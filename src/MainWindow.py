@@ -1,6 +1,6 @@
-from src.Istaller import Installer
-from src.Proceses import Proceses
-from src.static.comands import Commands as co
+from Istaller import Installer
+from Proceses import Proceses
+from static.comands import Commands as co
 import locale
 from locale import gettext as _
 import os
@@ -29,7 +29,7 @@ class MainWindow(Gtk.Window):
         # Translate things on glade:
         self.builder.set_translation_domain(APPNAME)
 
-        self.builder.add_from_file("ui/ui3.glade")
+        self.builder.add_from_file(os.path.dirname(os.path.abspath(__file__)) + "/../ui/MainWindow.glade")
         self.builder.connect_signals(self)
 
         # Add Window
@@ -115,8 +115,12 @@ class MainWindow(Gtk.Window):
             "cmb_device_type")
         self.btn_and_chose_next: Gtk.Button = self.builder.get_object(
             "btn_and_chose_next")
+        self.btn_and_chose_back: Gtk.Button = self.builder.get_object(
+            "btn_and_chose_back")
         self.btn_set_pro_next: Gtk.Button = self.builder.get_object(
             "btn_set_pro_next")
+        self.btn_set_pro_back: Gtk.Button = self.builder.get_object(
+            "btn_set_pro_back")
 
         self.spn_ram: Gtk.Spinner = self.builder.get_object("spn_ram")
         self.spn_disk: Gtk.Spinner = self.builder.get_object("spn_disk")
@@ -178,7 +182,6 @@ class MainWindow(Gtk.Window):
         cmb.set_active(0)
 
     def fill_avd_list(self, o=None):
-
         for child in self.lst_virt_mach.get_children():
             self.lst_virt_mach.remove(child)
         for r in self.proceses.avd_lst:
@@ -187,6 +190,8 @@ class MainWindow(Gtk.Window):
         self.lst_virt_mach.show_all()
         first_row = self.lst_virt_mach.get_row_at_index(0)
         self.lst_virt_mach.select_row(first_row)
+        GLib.idle_add(self.avd_emmty_btn,self.proceses.avd_lst[0])
+
 
     def get_spn_properties(self):
         res = {}
@@ -245,6 +250,17 @@ class MainWindow(Gtk.Window):
         self.btn_delete.set_sensitive(val)
         self.btn_start.set_sensitive(val)
         self.btn_stop.set_sensitive(not val)
+
+    def avd_emmty_btn(self, output):
+        if output!="":
+            val=True
+        else:
+            val=False
+        self.btn_edit.set_sensitive(val)
+        self.btn_delete.set_sensitive(val)
+        self.btn_start.set_sensitive(val)
+        self.btn_force_stop.set_sensitive(val)
+        self.btn_stop.set_sensitive(val)
 
     def fill_cpu_cores(self):
         self.fill_cmb(self.cmb_cpu, range(1, os.cpu_count()+1))
@@ -341,6 +357,12 @@ class MainWindow(Gtk.Window):
             self.installer.set_configuration(self.get_spn_properties())
             self.fill_properties()
             self.stck_main.set_visible_child_name("box_main")
+    
+    def on_btn_set_pro_back_clicked(self,b):
+        if self.is_main:  # ? sdk ile yeni oluştur
+            self.stck_main.set_visible_child_name("box_android_chose")
+        else:  # ? düzenleme
+            self.stck_main.set_visible_child_name("box_main")
 
     def on_btn_and_chose_next_clicked(self, b):
         index =self.cmb_device_type.get_active()
@@ -354,6 +376,10 @@ class MainWindow(Gtk.Window):
         co.droidname = co.toolname.split(";")[1]
         print(co.toolname, co.droidname)
         self.stck_main.set_visible_child_name("box_set_properties")
+
+    def on_btn_and_chose_back_clicked(self,b):
+        self.stck_main.set_visible_child_name("box_main")
+
 
     def destroy(self):
         #TODO: çıkarken emulatör açık kalsın mı sor

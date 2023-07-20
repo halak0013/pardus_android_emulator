@@ -1,4 +1,4 @@
-from src.static.comands import Commands as co
+from static.comands import Commands as co
 from gi.repository import GLib
 import threading
 import subprocess

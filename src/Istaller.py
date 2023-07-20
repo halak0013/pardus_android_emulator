@@ -1,7 +1,7 @@
 from gi.repository import GLib, Gtk
-from src.AsyncFileDownloader import AsyncFileDownloader
-from src.CommandRunner import CommandRunner
-from src.static.comands import Commands as co
+from AsyncFileDownloader import AsyncFileDownloader
+from CommandRunner import CommandRunner
+from static.comands import Commands as co
 from bs4 import BeautifulSoup as bs
 import requests
 import threading,os
