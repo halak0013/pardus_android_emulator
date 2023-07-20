@@ -55,6 +55,8 @@ class Proceses:
                     datas['display_width'] = line.split()[-1]
                 elif line.startswith("hw.lcd.density"):
                     datas['density'] = line.split()[-1]
+                elif line.startswith("image.sysdir.1"):
+                    datas['sys_name'] = line.split("=")[-1]
         return datas
 
     def get_true_false(self,val):

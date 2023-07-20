@@ -46,6 +46,7 @@ class MainWindow(Gtk.Window):
         self.window.show_all()
         if not self.installer.check_sdkm():
             self.dialog_sdkm.set_visible(True)
+        self.stck_switcher.hide() #! for debug mode
 
         # Set version
         try:
@@ -95,6 +96,7 @@ class MainWindow(Gtk.Window):
             "btn_wait_cancel")
 
         self.stck_main: Gtk.Stack = self.builder.get_object("stck_main")
+        self.stck_switcher: Gtk.StackSwitcher = self.builder.get_object("stck_switcher")
 
         self.box_main: Gtk.Box = self.builder.get_object("box_main")
         self.box_wait: Gtk.Box = self.builder.get_object("box_wait")
@@ -153,6 +155,7 @@ class MainWindow(Gtk.Window):
             "rd_btn_portrait")
         self.rd_btn_landscape: Gtk.RadioButton = self.builder.get_object(
             "rd_btn_landscape")
+        self.lb_sys_name: Gtk.Label = self.builder.get_object("lb_sys_name")
 
         self.btn_force_stop: Gtk.Button = self.builder.get_object(
             "btn_force_stop")
@@ -185,7 +188,7 @@ class MainWindow(Gtk.Window):
         first_row = self.lst_virt_mach.get_row_at_index(0)
         self.lst_virt_mach.select_row(first_row)
 
-    def set_properties(self):
+    def get_spn_properties(self):
         res = {}
         res["ram"] = int(self.spn_ram.get_value())
         res["disk"] = int(self.spn_disk.get_value())
@@ -210,7 +213,6 @@ class MainWindow(Gtk.Window):
                 datas = self.proceses.get_configuration()
                 if not self.is_main:
                     self.entry_name.set_text(co.avd_name)
-                    print(datas["ram"])
                     self.spn_ram.set_value(float(datas["ram"][:-1]))
                     self.spn_disk.set_value(float(datas["disk"][:-1]))
                     self.spn_display_height.set_value(
@@ -235,6 +237,7 @@ class MainWindow(Gtk.Window):
                     self.lb_sd_card_p.set_text(str(datas["sd_card"]))
                     self.lb_gsm_p.set_text(str(datas["gsm_modem"]))
                     self.lb_cpu_p.set_text(datas["cpu_core"])
+                    self.lb_sys_name.set_text(datas["sys_name"])
 
     def active_button(self, val: bool):
         self.btn_new_virt_android.set_sensitive(val)
@@ -254,6 +257,15 @@ class MainWindow(Gtk.Window):
             self.fill_cmb(self.cmb_sdk_v, self.installer.g_list, True)
         elif index == 2:
             self.fill_cmb(self.cmb_sdk_v, self.installer.n_list, True)
+
+    def is_same_avd(self):
+        name=self.entry_name.get_text()
+        for a in self.proceses.avd_lst:
+            if name == a:
+                self.entry_name.set_text("")
+                self.entry_name.set_placeholder_text(_("Please type different name"))
+                return False
+        return True
 
     def on_btn_about_clicked(self, b):
         self.dialog_about.set_visible(True)
@@ -283,7 +295,7 @@ class MainWindow(Gtk.Window):
     def on_btn_new_virt_android_clicked(self, b):
         self.is_main = True
         self.entry_name.set_sensitive(True)
-        self.installer.get_andorio_list(None)
+        self.installer.get_andorio_list(self.fill_sdks)
 
     def on_btn_force_stop_clicked(self, b):
         self.active_button(True)
@@ -317,14 +329,16 @@ class MainWindow(Gtk.Window):
 
     def on_btn_set_pro_next_clicked(self, b):
         if self.is_main:  # ? sdk ile yeni oluştur
-            self.stck_main.set_visible_child_name("box_wait")
-            self.installer.intall_system_image(self.set_properties(), fn_up=[
-                lambda: self.proceses.get_init_variables(
-                    [self.fill_avd_list, self.fill_properties])
-            ])
+            if self.is_same_avd():
+                print(self.is_same_avd(),"**********************************************")
+                self.stck_main.set_visible_child_name("box_wait")
+                self.installer.intall_system_image(self.get_spn_properties(), fn_up=[
+                    lambda: self.proceses.get_init_variables(
+                        [self.fill_avd_list, self.fill_properties])
+                ])
         else:  # ? düzenleme
             self.is_main = True
-            self.installer.set_configuration(self.set_properties())
+            self.installer.set_configuration(self.get_spn_properties())
             self.fill_properties()
             self.stck_main.set_visible_child_name("box_main")
 

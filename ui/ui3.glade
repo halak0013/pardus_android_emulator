@@ -477,7 +477,7 @@ June 2014.</property>
         <property name="can-focus">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkStackSwitcher">
+          <object class="GtkStackSwitcher" id="stck_switcher">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="stack">stck_main</property>
@@ -1044,6 +1044,18 @@ June 2014.</property>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
                             <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="lb_sys_name">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="halign">start</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">2</property>
                           </packing>
                         </child>
                       </object>

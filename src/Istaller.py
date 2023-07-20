@@ -52,9 +52,10 @@ class Installer:
         # ? install sdk manager
         os.makedirs(co.HOME+"/.android-emulator/userdata/")
 
-    def get_andorio_list(self, b):
+    def get_andorio_list(self, update_sdk_cmb):
         comand_runner = CommandRunner(
-            co.cmd_system_image, self.lb_subpro_output, self.lb_wait_status, fun_with_output=[self.fill_android_sdk])
+            co.cmd_system_image, self.lb_subpro_output, self.lb_wait_status, 
+            fun_with_output=[self.fill_android_sdk],fun_with_paramaters=[update_sdk_cmb])
         comand_runner.run()
         del comand_runner
 
