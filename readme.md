@@ -1,6 +1,6 @@
 # Pardus Android Emulator
 
-Yo can:
+You can:
 - Generate an Android Emulator,
 - Edit it,
 - Delete it,
@@ -31,3 +31,7 @@ sudo mk-build-deps -ir
 gbp buildpackage --git-export-dir=/tmp/build/pardus-android-emulator -us -uc --git-ignore-branch --git-ignore-new
 
 ```
+
+# License
+
+This application is published under the GPL-3.0 license , but you have to accept the google terms of use while installing the android emulator in the application.
