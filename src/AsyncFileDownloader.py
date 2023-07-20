@@ -22,8 +22,6 @@ class AsyncFileDownloader:
 
     # ? async bu fonksiyon asenkron
     async def download_file(self, path, archive_file_path, extract_dir, lb_subpro_output, lb_dialog_wait_status,f_update=None):
-        #self.timer = GLib.timeout_add(3000, self.up_lb)
-        #GLib.idle_add(self.update_label)
 
         self.archive_file_path = archive_file_path
         self.extract_dir = extract_dir
@@ -89,7 +87,6 @@ class AsyncFileDownloader:
             print("dow 1")
             self.out_text = ""
             self.status_text = ""
-            #GLib.source_remove(self.timer)
         else:
             print("Download failed!")
         self.is_downloaded=False
@@ -114,10 +111,9 @@ class AsyncFileDownloader:
                         if self.file_size != 0:
                             status_text += f"  %{extracted_count / file_count * 100}"
                         self.out_text += "\n"+status_text
-                        #GLib.idle_add(self.update_label)
 
                 os.remove(self.archive_file_path)
-                print("arşiv dosyası başarıyla ayrıştırıldı.")
+                print("archive file parsed successfully.")
 
             elif self.archive_file_path.split('.')[-1] == "gz":
                 with tarfile.open(self.archive_file_path, "r:gz") as tar_ref:
@@ -131,34 +127,31 @@ class AsyncFileDownloader:
                         if self.file_size != 0:
                             status_text += f"  %{extracted_count / file_count * 100}"
                         self.out_text += "\n"+status_text
-                        #GLib.idle_add(self.update_label)
 
                 os.remove(self.archive_file_path)
-                print("arşiv dosyası başarıyla ayrıştırıldı.")
+                print("archive file parsed successfully.")
         except Exception as e:
-            print("arşiv dosyası ayrıştırılırken bir hata oluştu:", str(e))
+            print("An error occurred while parsing the archive file:", str(e))
 
     def move_files(self):
-        # Dosyaları taşıma
+        # File moving
         source_dir = os.path.join(self.extract_dir, "cmdline-tools")
         temp_dir = os.path.join(self.extract_dir, "qq")
         destination_dir = os.path.join(
             self.extract_dir, "cmdline-tools", "latest")
 
-        # 'qq' dizinini 'cmdline-tools' dizinine taşıma
+        # move 'qq' folder to 'cmdline-tools' folder
         shutil.move(source_dir, temp_dir)
 
-        # 'latest' dizinini oluşturma
+        # generate 'latest' folder
         os.makedirs(destination_dir, exist_ok=True)
 
-        # Dosyaları 'latest' dizinine taşıma
+        # move 'latest'
         for item in os.listdir(temp_dir):
             item_path = os.path.join(temp_dir, item)
             shutil.move(item_path, destination_dir)
 
-        # 'qq' dizinini silme
         os.rmdir(temp_dir)
 
     def install_sdkm(self):
-        #GLib.source_remove(self.timer)
         self.f_update()

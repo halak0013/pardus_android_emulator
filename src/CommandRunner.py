@@ -28,7 +28,7 @@ class CommandRunner:
         )
 
         while self.is_thread_runnig:
-            print("komut çalıştırıcı")
+            print("comand runner")
             print(self.command)
             line = process.stdout.readline()
             if len(line) != 0:
