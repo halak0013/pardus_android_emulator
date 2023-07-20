@@ -7,6 +7,7 @@ import shutil
 from time import sleep
 import gi
 gi.require_version('Gtk', '3.0')
+from src.static.comands import Commands as co
 
 
 class AsyncFileDownloader:
@@ -16,6 +17,7 @@ class AsyncFileDownloader:
         self.url = url
         self.file_size = 0
         self.downloaded_size = 0
+        self.is_downloaded = True
 
 
     # ? async bu fonksiyon asenkron
@@ -31,12 +33,13 @@ class AsyncFileDownloader:
         self.status_text = ""
         self.f_update = f_update
         self.is_downloaded = True
+        w1=True
+        w2=True
+        w3=True
+        count = 0
 
         async with aiohttp.ClientSession() as session:  # ? asenkron http isteklerini yönetiyor
             # ? urly bir get isteği atayoruz
-            w1=True
-            w2=True
-            w3=True
             async with session.get(self.url) as response:
                 self.file_size = int(response.headers.get('Content-Length', 0))
                 path = self.url.split('/')[-1] if path == None else path
@@ -68,12 +71,15 @@ class AsyncFileDownloader:
 
                         file.write(chunk)
                         self.downloaded_size += len(chunk)
-                        self.status_text = f"Downloaded size: {(self.downloaded_size/1048576)}Mb"
-                        if self.file_size != 0:
-                            self.status_text += f"  %{self.downloaded_size/self.file_size*100}"
-                        self.out_text += "\n"+self.status_text
+                        if count == 500:
+                            self.status_text = f"Downloaded size: {(self.downloaded_size/1048576):.4}Mb"
+                            if self.file_size != 0:
+                                self.status_text += f"  %{(self.downloaded_size/self.file_size*100):.4}"
+                            self.out_text += "\n"+self.status_text
+                            GLib.idle_add(self.update_label)
+                            count = 0
+                        count += 1
                         print(self.status_text)
-                        #GLib.idle_add(self.update_label)
         print(self.downloaded_size, self.file_size)
         if self.downloaded_size == self.file_size:
             print("Download complete!")
@@ -86,14 +92,11 @@ class AsyncFileDownloader:
             #GLib.source_remove(self.timer)
         else:
             print("Download failed!")
-
-    def up_lb(self):
-        GLib.idle_add(self.update_label)
+        self.is_downloaded=False
 
     def update_label(self):
         self.lb_subpro_output.set_text(self.out_text)
         self.lb_dialog_wait_status.set_text(self.status_text)
-        return self.is_thread_runnig
     
     def extract_file(self):
         self.out_text = ""
