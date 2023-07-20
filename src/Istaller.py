@@ -56,7 +56,7 @@ class Installer:
     def get_andorio_list(self, update_sdk_cmb):
         comand_runner = CommandRunner(
             co.cmd_system_image, self.lb_subpro_output, self.lb_wait_status, 
-            fun_with_output=[self.fill_android_sdk],fun_with_paramaters=[update_sdk_cmb])
+            fun_with_output=[self.fill_android_sdk],fun_with_paramaters=update_sdk_cmb+[self.go_to_sdk])
         comand_runner.run()
         del comand_runner
 
@@ -115,6 +115,9 @@ class Installer:
 
     def go_to_main(self,o=None):
         GLib.idle_add(self.change_stack_page, "box_main")
+    def go_to_sdk(self):
+        GLib.idle_add(self.change_stack_page, "box_android_chose")
+
 
     def set_configuration(self, datas: dict):
         with open(f"{co.HOME}/.android-emulator/avd/{co.avd_name}.avd/config.ini", "r") as file:

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-18 20:15+0300\n"
+"POT-Creation-Date: 2023-07-20 19:29+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Muhammet Halak <halakmuhammet145@gmail.com>Language-Team: "
 "Turkish <dev@pardus.org.tr>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0\n"
 "X-Generator: Gtranslator 3.38.0\n"
 
-#: ui/ui3.glade:18
+#: ui/MainWindow.glade:18
 msgid ""
 "Bu program kesinlikle hiçbir garanti vermiyor.\n"
 "Ayrıntılar için <a href=\"https://www.gnu.org/licenses/gpl-3.0.html\">GNU "
@@ -28,23 +28,23 @@ msgstr ""
 "Ayrıntılar için <a href=\"https://www.gnu.org/licenses/gpl-3.0.html\">GNU "
 "Genel Kamu Lisansı, sürüm 3 ya da sonrası</a> bağlantısına bakın."
 
-#: ui/ui3.glade:55
+#: ui/MainWindow.glade:55
 msgid "sdk manager not in system"
 msgstr "sdk yöneticisi sisteminizde bulunmamaktadır"
 
-#: ui/ui3.glade:69
+#: ui/MainWindow.glade:69
 msgid "Accept Terms"
 msgstr "Kullanım Koşullarını Kabul Et"
 
-#: ui/ui3.glade:84
+#: ui/MainWindow.glade:84
 msgid "No"
 msgstr "Hayır"
 
-#: ui/ui3.glade:98
+#: ui/MainWindow.glade:98
 msgid "Yes"
 msgstr "Evet"
 
-#: ui/ui3.glade:125
+#: ui/MainWindow.glade:125
 msgid ""
 "Your system dosn't have sdk manager. \n"
 "Do you want to install it?"
@@ -52,7 +52,7 @@ msgstr ""
 "Sistemde sdk yöneticisi bulunmamaktadır. \n"
 "Yüklemek istiyor musunuz?"
 
-#: ui/ui3.glade:154
+#: ui/MainWindow.glade:154
 msgid ""
 "Terms and Conditions\n"
 "\n"
@@ -723,196 +723,217 @@ msgid ""
 "June 2014."
 msgstr ""
 
-#: ui/ui3.glade:521
+#: ui/MainWindow.glade:521
 msgid "Virtual Device List"
 msgstr "Sanal Cihaz Listesi"
 
-#: ui/ui3.glade:582
+#: ui/MainWindow.glade:582
 msgid "Properties"
 msgstr "Özellikler"
 
-#: ui/ui3.glade:616
+#: ui/MainWindow.glade:616
 msgid "Ram: "
 msgstr "Ram: "
 
-#: ui/ui3.glade:631 ui/ui3.glade:672 ui/ui3.glade:713 ui/ui3.glade:754
-#: ui/ui3.glade:795 ui/ui3.glade:853 ui/ui3.glade:894 ui/ui3.glade:935
-#: ui/ui3.glade:976 ui/ui3.glade:1017 ui/ui3.glade:1359
+#: ui/MainWindow.glade:631 ui/MainWindow.glade:672 ui/MainWindow.glade:713
+#: ui/MainWindow.glade:754 ui/MainWindow.glade:795 ui/MainWindow.glade:853
+#: ui/MainWindow.glade:894 ui/MainWindow.glade:935 ui/MainWindow.glade:976
+#: ui/MainWindow.glade:1017 ui/MainWindow.glade:2064
 msgid "None"
 msgstr "Belli Değil"
 
-#: ui/ui3.glade:657
+#: ui/MainWindow.glade:657
 msgid "Disk Partion: "
 msgstr "Disk Bölümü: "
 
-#: ui/ui3.glade:698
+#: ui/MainWindow.glade:698
 msgid "Height: "
 msgstr "Yükseklik: "
 
-#: ui/ui3.glade:739
+#: ui/MainWindow.glade:739
 msgid "Width: "
 msgstr "Genişlik: "
 
-#: ui/ui3.glade:780
+#: ui/MainWindow.glade:780
 msgid "Display Density: "
 msgstr "Ekran Yoğunluğu: "
 
-#: ui/ui3.glade:838
+#: ui/MainWindow.glade:838
 msgid "Keyboard: "
 msgstr "Klavye: "
 
-#: ui/ui3.glade:879
+#: ui/MainWindow.glade:879
 msgid "Gpu: "
 msgstr "GPU: "
 
-#: ui/ui3.glade:920
+#: ui/MainWindow.glade:920
 msgid "SD Card: "
 msgstr "SD Kart: "
 
-#: ui/ui3.glade:961
+#: ui/MainWindow.glade:961
 msgid "Gsm Mode: "
 msgstr "GSM Modu: "
 
-#: ui/ui3.glade:1002
+#: ui/MainWindow.glade:1002
 msgid "Cpu: "
 msgstr "İşlemci: "
 
-#: ui/ui3.glade:1073
+#: ui/MainWindow.glade:1085
 msgid "New Virtual Android"
 msgstr "Yeni Sanal Android"
 
-#: ui/ui3.glade:1087
+#: ui/MainWindow.glade:1099
 msgid "Edit"
 msgstr "Düzenle"
 
-#: ui/ui3.glade:1101
+#: ui/MainWindow.glade:1113
 msgid "Delete"
 msgstr "Sil"
 
-#: ui/ui3.glade:1115
+#: ui/MainWindow.glade:1127
 msgid "Start"
 msgstr "Başlat"
 
-#: ui/ui3.glade:1129
+#: ui/MainWindow.glade:1141
 msgid "Force Stop"
 msgstr "Zorla Durdur"
 
-#: ui/ui3.glade:1143
+#: ui/MainWindow.glade:1155
 msgid "Stop"
 msgstr "Durdur"
 
-#: ui/ui3.glade:1165
+#: ui/MainWindow.glade:1177
 msgid "box_main"
 msgstr "ana_kutu"
 
-#: ui/ui3.glade:1213
+#: ui/MainWindow.glade:1223
 msgid "Device Type"
 msgstr "Cihaz Türü"
 
-#: ui/ui3.glade:1249
+#: ui/MainWindow.glade:1259
 msgid "Android Sdk Version"
 msgstr "Android Sdk Sürümü"
 
-#: ui/ui3.glade:1277 ui/ui3.glade:1987
+#: ui/MainWindow.glade:1293 ui/MainWindow.glade:1960
+msgid "Back"
+msgstr "Geri"
+
+#: ui/MainWindow.glade:1308 ui/MainWindow.glade:1975
 msgid "Next"
 msgstr "Sonraki"
 
-#: ui/ui3.glade:1300
+#: ui/MainWindow.glade:1338
 msgid "box_android_chose"
 msgstr "android_secim_kutusu"
 
-#: ui/ui3.glade:1371
-msgid "box_wait"
-msgstr "bekleme_kutusu"
-
-#: ui/ui3.glade:1402
+#: ui/MainWindow.glade:1368
 msgid "Ram"
 msgstr "RAM"
 
-#: ui/ui3.glade:1431
+#: ui/MainWindow.glade:1397
 msgid "2048"
 msgstr "2048"
 
-#: ui/ui3.glade:1466
+#: ui/MainWindow.glade:1433
 msgid "Disk Partion"
 msgstr "Disk Bölümü"
 
-#: ui/ui3.glade:1495
+#: ui/MainWindow.glade:1462
 msgid "20"
 msgstr "20"
 
-#: ui/ui3.glade:1535
+#: ui/MainWindow.glade:1502
 msgid "Height"
 msgstr "Yükseklik"
 
-#: ui/ui3.glade:1547 ui/ui3.glade:1586
+#: ui/MainWindow.glade:1514 ui/MainWindow.glade:1553
 msgid "720"
 msgstr "720"
 
-#: ui/ui3.glade:1574
+#: ui/MainWindow.glade:1541
 msgid "Width"
 msgstr "Genişlik"
 
-#: ui/ui3.glade:1620
+#: ui/MainWindow.glade:1588
 msgid "Display Density"
 msgstr "Ekran Yoğunluğu"
 
-#: ui/ui3.glade:1649
+#: ui/MainWindow.glade:1617
 msgid "160"
 msgstr "160"
 
-#: ui/ui3.glade:1698
+#: ui/MainWindow.glade:1664
 msgid "Name"
 msgstr "İsim"
 
-#: ui/ui3.glade:1725
+#: ui/MainWindow.glade:1691
 msgid "Keyboard"
 msgstr "Klavye"
 
-#: ui/ui3.glade:1764
+#: ui/MainWindow.glade:1730
 msgid "Gpu"
 msgstr "GPU"
 
-#: ui/ui3.glade:1803
+#: ui/MainWindow.glade:1769
 msgid "SD Card"
 msgstr "SD Kart"
 
-#: ui/ui3.glade:1841
+#: ui/MainWindow.glade:1807
 msgid "Gsm Mode"
 msgstr "GSM Modu"
 
-#: ui/ui3.glade:1870
+#: ui/MainWindow.glade:1836
 msgid "CPU Core"
 msgstr "İşlemci çekirdeği"
 
-#: ui/ui3.glade:1928
+#: ui/MainWindow.glade:1895
 msgid "Orientation"
 msgstr "Cihaz Yönü"
 
-#: ui/ui3.glade:1943
+#: ui/MainWindow.glade:1910
 msgid "Landscape"
 msgstr "Yatay"
 
-#: ui/ui3.glade:1958
+#: ui/MainWindow.glade:1925
 msgid "Portrait"
 msgstr "Dikey"
 
-#: ui/ui3.glade:2009
+#: ui/MainWindow.glade:2005
 msgid "box_set_properties"
 msgstr "ozellikleri_ayarla_kutusu"
 
-#: ui/ui3.glade:2026
+#: ui/MainWindow.glade:2076
+msgid "box_wait"
+msgstr "bekleme_kutusu"
+
+#: ui/MainWindow.glade:2093
 msgid "Pardus Android Emulator"
 msgstr "Pardus Android Emülatörü"
 
-#: ui/MainWindow.py:70
+#: src/MainWindow.py:71
 msgid "With Google and Play Store"
 msgstr "Google ve Play Store ile"
 
-#: ui/MainWindow.py:71
+#: src/MainWindow.py:72
 msgid "With Google without Play Store"
 msgstr "Google olup Play Store olmadan"
 
-#: ui/MainWindow.py:72
+#: src/MainWindow.py:73
 msgid "Without Google and Play Store"
 msgstr "Google ve Play Store olmadan"
+
+#: src/MainWindow.py:282
+msgid "Please type different name"
+msgstr "Lütfen farklı bir isim girin"
+
+#: src/MainWindow.py:291
+msgid "Please don't type whitespace"
+msgstr "Lütfen boşluk burakmayın"
+
+#: src/MainWindow.py:295
+msgid "Please don't type spacial chracter(.*/şüİ~)"
+msgstr "Lütfen özel karakter(.*/şüİ~) kullanmayın"
+
+#: src/MainWindow.py:327 src/MainWindow.py:328
+msgid "Waiting to get andorid sdk list..."
+msgstr "Android sdk listesi bekleniyor..."

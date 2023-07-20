@@ -1,2 +1,2 @@
-ui/ui3.glade
-ui/MainWindow.py
+ui/MainWindow.glade
+src/MainWindow.py

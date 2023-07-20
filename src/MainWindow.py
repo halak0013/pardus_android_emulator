@@ -292,7 +292,7 @@ class MainWindow(Gtk.Window):
             return False
         elif any(not char.isalnum() and not char.isspace() for char in name) or bool(set(name).intersection(set(Turkish_c))):
             self.entry_name.set_text("")
-            self.entry_name.set_placeholder_text(_("Please don't type spacial chracter"))
+            self.entry_name.set_placeholder_text(_("Please don't type spacial chracter(.*/şüİ~)"))
             return False
         return True
     
@@ -324,7 +324,10 @@ class MainWindow(Gtk.Window):
     def on_btn_new_virt_android_clicked(self, b):
         self.is_main = True
         self.entry_name.set_sensitive(True)
-        self.installer.get_andorio_list(self.fill_sdks)
+        self.lb_dialog_wait_status=_("Waiting to get andorid sdk list...")
+        self.lb_subpro_output=_("Waiting to get andorid sdk list...")
+        self.stck_main.set_visible_child_name("box_wait")
+        self.installer.get_andorio_list([self.fill_sdks])
 
     def on_btn_force_stop_clicked(self, b):
         self.active_button(True)
