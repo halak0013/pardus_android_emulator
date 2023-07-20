@@ -18,7 +18,7 @@
     <property name="license" translatable="yes">Bu program kesinlikle hiçbir garanti vermiyor.
 Ayrıntılar için &lt;a href="https://www.gnu.org/licenses/gpl-3.0.html"&gt;GNU Genel Kamu Lisansı, sürüm 3 ya da sonrası&lt;/a&gt; bağlantısına bakın.</property>
     <property name="authors">Muhammet Halak
-Ali Rıza</property>
+Ali Rıza Keskin</property>
     <property name="logo">../data/pardus-android-emulator.svg</property>
     <property name="wrap-license">True</property>
     <property name="license-type">gpl-3-0</property>
@@ -1178,239 +1178,6 @@ June 2014.</property>
               </packing>
             </child>
             <child>
-              <object class="GtkBox" id="box_android_chose">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="valign">center</property>
-                <property name="homogeneous">True</property>
-                <child>
-                  <object class="GtkImage">
-                    <property name="width-request">20</property>
-                    <property name="height-request">14</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="hexpand">False</property>
-                    <property name="pixbuf">../data/pardus-android-emulator.svg</property>
-                    <property name="icon_size">1</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="margin-start">11</property>
-                    <property name="margin-end">11</property>
-                    <property name="margin-top">11</property>
-                    <property name="margin-bottom">11</property>
-                    <property name="orientation">vertical</property>
-                    <property name="spacing">7</property>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="margin-top">14</property>
-                        <property name="orientation">vertical</property>
-                        <property name="spacing">7</property>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">Device Type</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkComboBoxText" id="cmb_device_type">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <signal name="changed" handler="on_cmb_device_type_changed" swapped="no"/>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="orientation">vertical</property>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">Android Sdk Version</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkComboBoxText" id="cmb_sdk_v">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="halign">center</property>
-                        <property name="spacing">21</property>
-                        <child>
-                          <object class="GtkButton" id="btn_and_chose_back">
-                            <property name="label" translatable="yes">Back</property>
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="receives-default">True</property>
-                            <property name="margin-top">19</property>
-                            <signal name="clicked" handler="on_btn_and_chose_back_clicked" swapped="no"/>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkButton" id="btn_and_chose_next">
-                            <property name="label" translatable="yes">Next</property>
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="receives-default">True</property>
-                            <property name="margin-top">19</property>
-                            <signal name="clicked" handler="on_btn_and_chose_next_clicked" swapped="no"/>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">2</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-              </object>
-              <packing>
-                <property name="name">box_android_chose</property>
-                <property name="title" translatable="yes">box_android_chose</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkBox" id="box_wait">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="orientation">vertical</property>
-                <property name="spacing">7</property>
-                <child>
-                  <object class="GtkSpinner">
-                    <property name="width-request">21</property>
-                    <property name="height-request">51</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="active">True</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkScrolledWindow">
-                    <property name="width-request">300</property>
-                    <property name="height-request">111</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="shadow-type">in</property>
-                    <property name="propagate-natural-width">True</property>
-                    <child>
-                      <object class="GtkViewport">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="vexpand">True</property>
-                        <property name="hscroll-policy">natural</property>
-                        <property name="vscroll-policy">natural</property>
-                        <child>
-                          <object class="GtkLabel" id="lb_subpro_output">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="wrap">True</property>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="lb_dialog_wait_status">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">None</property>
-                    <property name="wrap">True</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">2</property>
-                  </packing>
-                </child>
-              </object>
-              <packing>
-                <property name="name">box_wait</property>
-                <property name="title" translatable="yes">box_wait</property>
-                <property name="position">2</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkBox" id="box_set_properties">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
@@ -1435,6 +1202,7 @@ June 2014.</property>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="halign">start</property>
                             <property name="label" translatable="yes">Ram</property>
                           </object>
                           <packing>
@@ -1499,6 +1267,7 @@ June 2014.</property>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="halign">start</property>
                             <property name="label" translatable="yes">Disk Partion</property>
                           </object>
                           <packing>
@@ -1653,6 +1422,7 @@ June 2014.</property>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="halign">start</property>
                             <property name="label" translatable="yes">Display Density</property>
                           </object>
                           <packing>
@@ -1913,6 +1683,7 @@ June 2014.</property>
                           <object class="GtkBox" id="cmb_cpu_core">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="spacing">7</property>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
@@ -2070,6 +1841,239 @@ June 2014.</property>
               <packing>
                 <property name="name">box_set_properties</property>
                 <property name="title" translatable="yes">box_set_properties</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox" id="box_android_chose">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="valign">center</property>
+                <property name="homogeneous">True</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="width-request">20</property>
+                    <property name="height-request">14</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="hexpand">False</property>
+                    <property name="pixbuf">../data/pardus-android-emulator.svg</property>
+                    <property name="icon_size">1</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="margin-start">11</property>
+                    <property name="margin-end">11</property>
+                    <property name="margin-top">11</property>
+                    <property name="margin-bottom">11</property>
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">7</property>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="margin-top">14</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">7</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="label" translatable="yes">Device Type</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkComboBoxText" id="cmb_device_type">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <signal name="changed" handler="on_cmb_device_type_changed" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="orientation">vertical</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="label" translatable="yes">Android Sdk Version</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkComboBoxText" id="cmb_sdk_v">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="halign">center</property>
+                        <property name="spacing">21</property>
+                        <child>
+                          <object class="GtkButton" id="btn_and_chose_back">
+                            <property name="label" translatable="yes">Back</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
+                            <property name="margin-top">19</property>
+                            <signal name="clicked" handler="on_btn_and_chose_back_clicked" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="btn_and_chose_next">
+                            <property name="label" translatable="yes">Next</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">True</property>
+                            <property name="margin-top">19</property>
+                            <signal name="clicked" handler="on_btn_and_chose_next_clicked" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="name">box_android_chose</property>
+                <property name="title" translatable="yes">box_android_chose</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox" id="box_wait">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">7</property>
+                <child>
+                  <object class="GtkSpinner">
+                    <property name="width-request">21</property>
+                    <property name="height-request">51</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="active">True</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkScrolledWindow">
+                    <property name="width-request">300</property>
+                    <property name="height-request">111</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="shadow-type">in</property>
+                    <property name="propagate-natural-width">True</property>
+                    <child>
+                      <object class="GtkViewport">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="vexpand">True</property>
+                        <property name="hscroll-policy">natural</property>
+                        <property name="vscroll-policy">natural</property>
+                        <child>
+                          <object class="GtkLabel" id="lb_subpro_output">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="wrap">True</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lb_dialog_wait_status">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">None</property>
+                    <property name="wrap">True</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="name">box_wait</property>
+                <property name="title" translatable="yes">box_wait</property>
                 <property name="position">3</property>
               </packing>
             </child>

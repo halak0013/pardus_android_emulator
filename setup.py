@@ -41,7 +41,11 @@ data_files = [
      ["tr.org.pardus.android.emulator.desktop"]),  # /usr/share/icons
 
     ("/usr/share/icons",
-     ["data/pardus-android-emulator.svg"]),  # 
+     ["data/pardus-android-emulator.svg"]),
+
+    ("/usr/share/icons/hicolor/scalable/apps/",
+     ["data/pardus-android-emulator.svg"]),
+
 
 
     ("/usr/share/pardus/pardus-android-emulator/ui",

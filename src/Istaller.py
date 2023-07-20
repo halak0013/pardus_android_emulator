@@ -35,8 +35,9 @@ class Installer:
                 shutil.rmtree(co.HOME+"/.android-emulator")
             return False
 
-    def install_sdkmanager(self):
+    def install_sdkmanager(self,fill_sdk):
         self.cmdline_tool_init()
+        self.fill_sdk=fill_sdk
         url = self.get_processed_url()
         self.downloader = AsyncFileDownloader(url)
         threading.Thread(target=self.download).start()
@@ -46,7 +47,7 @@ class Installer:
 
     async def main(self):
         comand_runner = CommandRunner(
-            co.cmd_install_sdk_maanger, self.lb_subpro_output, self.lb_wait_status, fun_with_output=[self.get_andorio_list])
+            co.cmd_install_sdk_maanger, self.lb_subpro_output, self.lb_wait_status, fun_with_output=[self.get_andorio_list,self.fill_sdk])
         await self.downloader.download_file("/tmp/cmdline-tools.zip", "/tmp/cmdline-tools.zip",
                                             co.SDK, self.lb_subpro_output, self.lb_wait_status,f_update=comand_runner.run)
         # ? install sdk manager
