@@ -282,7 +282,20 @@ class MainWindow(Gtk.Window):
                 self.entry_name.set_placeholder_text(_("Please type different name"))
                 return False
         return True
-
+    
+    def is_word(self):
+        name=self.entry_name.get_text()
+        Turkish_c="ğĞıİşŞüÜöÖçÇ"
+        if any(char.isspace() for char in name):
+            self.entry_name.set_text("")
+            self.entry_name.set_placeholder_text(_("Please don't type whitespace"))
+            return False
+        elif any(not char.isalnum() and not char.isspace() for char in name) or bool(set(name).intersection(set(Turkish_c))):
+            self.entry_name.set_text("")
+            self.entry_name.set_placeholder_text(_("Please don't type spacial chracter"))
+            return False
+        return True
+    
     def on_btn_about_clicked(self, b):
         self.dialog_about.set_visible(True)
 
@@ -291,7 +304,7 @@ class MainWindow(Gtk.Window):
 
     def on_btn_sdkm_yes_clicked(self, b):
         self.stck_main.set_visible_child_name("box_wait")
-        self.installer.install_sdkmanager()
+        self.installer.install_sdkmanager(self.fill_sdks)
         self.dialog_sdkm.set_visible(False)
 
     def on_cmb_device_type_changed(self, c: Gtk.ComboBox):
@@ -345,8 +358,7 @@ class MainWindow(Gtk.Window):
 
     def on_btn_set_pro_next_clicked(self, b):
         if self.is_main:  # ? sdk ile yeni oluştur
-            if self.is_same_avd():
-                print(self.is_same_avd(),"**********************************************")
+            if self.is_same_avd() and self.is_word():
                 self.stck_main.set_visible_child_name("box_wait")
                 self.installer.intall_system_image(self.get_spn_properties(), fn_up=[
                     lambda: self.proceses.get_init_variables(
