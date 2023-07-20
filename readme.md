@@ -7,7 +7,7 @@ Yo can:
 - Chose its sdk
 - with google or google and playstore or without google and playstore
 
-<img src="data/logo.svg" width="200" style="display: block; margin-left: auto; margin-right: auto;">
+<img src="data/pardus-android-emulator.svg" width="200" style="display: block; margin-left: auto; margin-right: auto;">
 
 ![main](data/img/main.png)
 

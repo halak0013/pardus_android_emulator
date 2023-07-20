@@ -41,7 +41,7 @@ data_files = [
      ["tr.org.pardus.android.emulator.desktop"]),  # /usr/share/icons
 
     ("/usr/share/icons",
-     ["data/logo.svg"]),  # 
+     ["data/pardus-android-emulator.svg"]),  # 
 
     ("/usr/share/pardus/pardus-android-emulator",
      ["main.py"]),
@@ -60,7 +60,7 @@ data_files = [
      ["src/static/comands.py"]),
 
     ("/usr/share/pardus/pardus-android-emulator/data",
-     ["data/logo.svg",
+     ["data/pardus-android-emulator.svg",
       "data/version"]),
 
     ("/usr/share/pardus/pardus-android-emulator/data/img",
