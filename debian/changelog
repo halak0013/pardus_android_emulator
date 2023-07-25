@@ -1,7 +1,21 @@
+pardus-android-emulator (1.2) stable; urgency=medium
+
+  [ Muhammet Halak ]
+  * changed sdk choosing method
+  * fix file error in unfinished process
+  * adding android version numbers
+  * adding process bar and output hiding
+  * checking kvm virtualization status
+  * adding info message
+  * spellchecking for variables
+  * update translation
+
+
+ -- Muhammet Halak <halakmuhammet145@gmail.com>  Thu, 25 Jul 2023 15:54:13 +0300
+
 pardus-android-emulator (1.1) stable; urgency=medium
 
   [ Muhammet Halak ]
-
   * Code template convert to Pardus standard
   * Changing button activation for avd list lb_wait_status
   * Adding back button in set properties and sdk choosing part
@@ -13,7 +27,7 @@ pardus-android-emulator (1.1) stable; urgency=medium
   * Icon path and .desktop file improvement
   * Added License alert for google license
 
-
+ -- Muhammet Halak <halakmuhammet145@gmail.com>  Thu, 20 Jul 2023 15:54:13 +0300
 
   * Initial Commit
 

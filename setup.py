@@ -61,7 +61,9 @@ data_files = [
 
     ("/usr/share/pardus/pardus-android-emulator/src/static",
      ["src/static/commands.py",
-      "src/static/android_versions.py",]),
+      "src/static/android_versions.py",
+      "src/static/common_vals.py",
+      ]),
 
     ("/usr/share/pardus/pardus-android-emulator/data",
      ["data/pardus-android-emulator.svg",

@@ -33,6 +33,7 @@ class CommandRunner:
             stderr=subprocess.PIPE,
             universal_newlines=True,
             env=co.env,
+            preexec_fn=os.setsid
         )
 
         while self.is_thread_running:
@@ -73,7 +74,10 @@ class CommandRunner:
 
     def stop(self):
         cv.is_process_running = False
-        pid = self.process.pid
-        pgid = os.getpgid(pid)
-        # Send SIGTERM to the process group to terminate the subprocess and its children
-        os.killpg(pgid, signal.SIGTERM)
+        if self.process != None:
+            print("dur")
+            pid = self.process.pid
+            pgid = os.getpgid(pid)
+            # Send SIGKILL to the process group to terminate the subprocess and its children immediately
+            os.killpg(pgid, signal.SIGKILL)
+
