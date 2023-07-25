@@ -1,39 +1,38 @@
 from gi.repository import GLib, Gtk
 from CommandRunner import CommandRunner
 from static.comands import Commands as co
+from static.common_vals import Common_vals as cv
 
-import shutil,os
+import shutil
+import os
 import gi
 gi.require_version("Gtk", "3.0")
 
 
 class Proceses:
-    def __init__(self, lb_subpro_output: Gtk.Label, lb_wait_status: Gtk.Label,
-                 chalge_stack_page: Gtk.Stack):
-        self.lb_subpro_output = lb_subpro_output
-        self.lb_wait_status = lb_wait_status
-        self.chalge_stack_page = chalge_stack_page
+    def __init__(self):
+        self.lb_subpro_output = cv.lb_subpro_output
+        self.lb_wait_status = cv.lb_dialog_wait_status
+        self.prg_status = cv.prg_bar_process
+        self.stck_main = cv.stck_main
         self.avd_lst = []
-
 
     def get_init_variables(self, fn):
         self.avd_lst = []
         comand_runner = CommandRunner(
-            co.avd_lst_c, self.lb_subpro_output, self.lb_wait_status, fun_with_output=[self.fill_avd_lst]+fn)
+            co.avd_lst_c, fun_with_output=[self.fill_avd_lst]+fn)
         comand_runner.run()
         del comand_runner
 
-
     def fill_avd_lst(self, output):
         self.avd_lst = output.strip().split("\n")
-
 
     def get_configuration(self):
         datas = {}
         with open(f"{co.HOME}/.android-emulator/avd/{co.avd_name}.avd/config.ini", "r") as file:
             lines = file.readlines()
             for line in lines:
-                if line.startswith(("hw.keyboard =","hw.keyboard=")):
+                if line.startswith(("hw.keyboard =", "hw.keyboard=")):
                     datas['keyboard'] = self.get_true_false(line.split()[-1])
                 elif line.startswith("hw.ramSize"):
                     datas['ram'] = line.split()[-1]
@@ -59,39 +58,51 @@ class Proceses:
                     datas['sys_name'] = line.split("=")[-1]
         return datas
 
-    def get_true_false(self,val):
+    def get_true_false(self, val):
         if val == "yes":
             return True
         else:
             return False
-        
+
     def run_avd(self):
-        print(co.droidname,co.toolname,co.avd_name)
+        print(co.droidname, co.toolname, co.avd_name)
         comand_runner = CommandRunner(
-            co.get_android_comand(False), self.lb_subpro_output, self.lb_wait_status, fun_with_paramaters=[
+            co.get_android_comand(False), fun_with_paramaters=[
                 lambda: self.go_to_page("box_main")])
         comand_runner.run()
         del comand_runner
 
     def delete_avd(self):
-        name=co.avd_name
+        name = co.avd_name
         if os.path.exists(f"{co.HOME}/.android-emulator/avd/{name}.avd"):
             shutil.rmtree(f"{co.HOME}/.android-emulator/avd/{name}.avd")
+        if os.path.exists(f"{co.HOME}/.android-emulator/avd/{name}.ini"):
             os.remove(f"{co.HOME}/.android-emulator/avd/{name}.ini")
 
         if os.path.exists(f"{co.HOME}/.android-emulator/userdata/{name}"):
             shutil.rmtree(f"{co.HOME}/.android-emulator/userdata/{name}")
-            
 
     def go_to_page(self, page):
         GLib.idle_add(self.change_stack_page, page)
 
-    def change_stack_page(self,page):
-        self.chalge_stack_page.set_visible_child_name(page)
+    def change_stack_page(self, page):
+        self.stck_main.set_visible_child_name(page)
 
     def stop_emulator(self):
         print(co.adb_kill)
-        comand_runner = CommandRunner(
-            co.adb_kill, self.lb_subpro_output, self.lb_wait_status)
+        comand_runner = CommandRunner(co.adb_kill)
         comand_runner.run()
         del comand_runner
+
+    def check_virtualization_support(self):
+        intel_path = "/sys/module/kvm_intel/parameters/nested"
+        amd_path = "/sys/module/kvm_amd/parameters/nested"
+
+        is_support = ""
+        if os.path.exists(amd_path):
+            with open(amd_path, "r") as amd_file:
+                is_support = amd_file.read().strip()
+        elif os.path.exists(intel_path):
+            with open(intel_path, "r") as intel_file:
+                is_support = intel_file.read().strip()
+        return True if is_support == "y" or is_support == "1" else False
