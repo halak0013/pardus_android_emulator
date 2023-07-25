@@ -1,6 +1,7 @@
-from Istaller import Installer
-from Proceses import Proceses
+from Installer import Installer
+from Process import Proceses
 from static.comands import Commands as co
+from static.common_vals import Common_vals as cv
 import locale
 from locale import gettext as _
 import os
@@ -29,7 +30,8 @@ class MainWindow(Gtk.Window):
         # Translate things on glade:
         self.builder.set_translation_domain(APPNAME)
 
-        self.builder.add_from_file(os.path.dirname(os.path.abspath(__file__)) + "/../ui/MainWindow.glade")
+        self.builder.add_from_file(os.path.dirname(
+            os.path.abspath(__file__)) + "/../ui/MainWindow.glade")
         self.builder.connect_signals(self)
 
         # Add Window
@@ -44,9 +46,12 @@ class MainWindow(Gtk.Window):
         self.init_variables()
 
         self.window.show_all()
-        if not self.installer.check_sdkm():
+        if not self.proceses.check_virtualization_support():
+            self.is_virt_active = False
+            self.open_info_dialog(_("Your CPU isn't support virtualization"))
+        elif not self.installer.check_sdkm():
             self.dialog_sdkm.set_visible(True)
-        self.stck_switcher.hide() #! for debug mode
+        self.stck_switcher.hide()  # ! for debug mode
 
         # Set version
         try:
@@ -57,22 +62,23 @@ class MainWindow(Gtk.Window):
             pass
 
     def init_variables(self):
+        cv.lb_subpro_output=self.lb_subpro_output
+        cv.lb_dialog_wait_status=self.lb_dialog_wait_status
+        cv.prg_bar_process=self.prg_bar_proces
+        cv.stck_main=self.stck_main
 
-        self.installer = Installer(
-            self.lb_subpro_output, self.lb_dialog_wait_status, self.stck_main)
+        self.installer = Installer()
         self.is_main = True
         self.is_edit = False
-        self.proceses = Proceses(
-            self.lb_subpro_output, self.lb_dialog_wait_status, self.stck_main)
+        self.is_virt_active = True
+        self.dev_type = 0
+
+        self.proceses = Proceses()
 
         self.dialog_sdkm.set_modal(True)
+        self.dialog_info.set_modal(True)
         self.btn_sdkm_yes.set_sensitive(False)
 
-        self.fill_cmb(self.cmb_device_type, [_('With Google and Play Store'),
-                                             _('With Google without Play Store'),
-                                             _('Without Google and Play Store')])
-        self.scr_window.set_policy(
-            Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         self.proceses.get_init_variables(
             [self.fill_avd_list, self.fill_properties])
         self.fill_cpu_cores()
@@ -82,6 +88,11 @@ class MainWindow(Gtk.Window):
         self.btn_about: Gtk.Button = self.builder.get_object("btn_about")
         self.dialog_about: Gtk.AboutDialog = self.builder.get_object(
             "dialog_about")
+
+        self.dialog_info: Gtk.MessageDialog = self.builder.get_object(
+            "dialog_info")
+        self.lb_dialo_info: Gtk.Label = self.builder.get_object(
+            "lb_dialo_info")
 
         self.dialog_sdkm: Gtk.Dialog = self.builder.get_object("dialog_sdkm")
         self.btn_sdkm_yes: Gtk.Button = self.builder.get_object("btn_sdkm_yes")
@@ -96,7 +107,8 @@ class MainWindow(Gtk.Window):
             "btn_wait_cancel")
 
         self.stck_main: Gtk.Stack = self.builder.get_object("stck_main")
-        self.stck_switcher: Gtk.StackSwitcher = self.builder.get_object("stck_switcher")
+        self.stck_switcher: Gtk.StackSwitcher = self.builder.get_object(
+            "stck_switcher")
 
         self.box_main: Gtk.Box = self.builder.get_object("box_main")
         self.box_wait: Gtk.Box = self.builder.get_object("box_wait")
@@ -109,10 +121,17 @@ class MainWindow(Gtk.Window):
             "lb_subpro_output")
         self.lb_dialog_wait_status: Gtk.Label = self.builder.get_object(
             "lb_dialog_wait_status")
+        self.prg_bar_proces: Gtk.ProgressBar = self.builder.get_object("prg_bar_proces")
 
         self.cmb_sdk_v: Gtk.ComboBoxText = self.builder.get_object("cmb_sdk_v")
         self.cmb_device_type: Gtk.ComboBoxText = self.builder.get_object(
-            "cmb_device_type")
+            "cmb_device_type")  # ! bura silincek
+        # TODO: bura silincek
+        self.btn_chck_google: Gtk.CheckButton = self.builder.get_object(
+            "btn_chck_google")
+        self.btn_chck_playstore: Gtk.CheckButton = self.builder.get_object(
+            "btn_chck_playstore")
+
         self.btn_and_chose_next: Gtk.Button = self.builder.get_object(
             "btn_and_chose_next")
         self.btn_and_chose_back: Gtk.Button = self.builder.get_object(
@@ -176,7 +195,7 @@ class MainWindow(Gtk.Window):
         cmb.remove_all()
         for c in lst:
             if is_spacial:
-                cmb.append_text(c.split(";")[1].title())
+                cmb.append_text(c)
             else:
                 cmb.append_text(str(c))
         cmb.set_active(0)
@@ -190,8 +209,7 @@ class MainWindow(Gtk.Window):
         self.lst_virt_mach.show_all()
         first_row = self.lst_virt_mach.get_row_at_index(0)
         self.lst_virt_mach.select_row(first_row)
-        GLib.idle_add(self.avd_emmty_btn,self.proceses.avd_lst[0])
-
+        GLib.idle_add(self.avd_emmty_btn, self.proceses.avd_lst[0])
 
     def get_spn_properties(self):
         res = {}
@@ -209,7 +227,7 @@ class MainWindow(Gtk.Window):
         ) else "landscape"
         res["name"] = self.entry_name.get_text()
         return res
-    
+
     def fill_properties(self, o=None):
         if len(self.proceses.avd_lst) != 0:
             co.avd_name = self.lst_virt_mach.get_selected_row().get_child().get_text()
@@ -222,7 +240,8 @@ class MainWindow(Gtk.Window):
                     self.spn_disk.set_value(float(datas["disk"][:-1]))
                     self.spn_display_height.set_value(
                         float(datas["display_height"]))
-                    self.spn_display_width.set_value(float(datas["display_width"]))
+                    self.spn_display_width.set_value(
+                        float(datas["display_width"]))
                     self.spn_density.set_value(float(datas["density"]))
                     self.chk_keyboard.set_active((datas["keyboard"]))
                     self.chk_gpu.set_active(datas["gpu"])
@@ -244,6 +263,10 @@ class MainWindow(Gtk.Window):
                     self.lb_cpu_p.set_text(datas["cpu_core"])
                     self.lb_sys_name.set_text(datas["sys_name"])
 
+    def open_info_dialog(self, message):
+        self.lb_dialo_info.set_text(message)
+        self.dialog_info.set_visible(True)
+
     def active_button(self, val: bool):
         self.btn_new_virt_android.set_sensitive(val)
         self.btn_edit.set_sensitive(val)
@@ -252,10 +275,10 @@ class MainWindow(Gtk.Window):
         self.btn_stop.set_sensitive(not val)
 
     def avd_emmty_btn(self, output):
-        if output!="":
-            val=True
+        if output != "":
+            val = True
         else:
-            val=False
+            val = False
         self.btn_edit.set_sensitive(val)
         self.btn_delete.set_sensitive(val)
         self.btn_start.set_sensitive(val)
@@ -265,37 +288,47 @@ class MainWindow(Gtk.Window):
     def fill_cpu_cores(self):
         self.fill_cmb(self.cmb_cpu, range(1, os.cpu_count()+1))
 
-    def fill_sdks(self,index=0):
+    def fill_sdks(self, index=0):
         if index == 0:
-            self.fill_cmb(self.cmb_sdk_v, self.installer.gv_list, True)
-            co.toolname = self.installer.gv_list[index]
+            self.fill_cmb(self.cmb_sdk_v, [e[1]
+                          for e in self.installer.gv_list], True)
+            co.toolname = self.installer.gv_list[index][0]
         elif index == 1:
-            self.fill_cmb(self.cmb_sdk_v, self.installer.g_list, True)
+            self.fill_cmb(self.cmb_sdk_v, [e[1]
+                          for e in self.installer.g_list], True)
         elif index == 2:
-            self.fill_cmb(self.cmb_sdk_v, self.installer.n_list, True)
+            self.fill_cmb(self.cmb_sdk_v, [e[1]
+                          for e in self.installer.n_list], True)
 
     def is_same_avd(self):
-        name=self.entry_name.get_text()
+        name = self.entry_name.get_text()
         for a in self.proceses.avd_lst:
             if name == a:
                 self.entry_name.set_text("")
-                self.entry_name.set_placeholder_text(_("Please type different name"))
+                self.open_info_dialog(_("Please type different name"))
+                self.entry_name.set_placeholder_text(
+                    _("Please type different name"))
                 return False
         return True
-    
+
     def is_word(self):
-        name=self.entry_name.get_text()
-        Turkish_c="ğĞıİşŞüÜöÖçÇ"
+        name = self.entry_name.get_text()
+        Turkish_c = "ğĞıİşŞüÜöÖçÇ"
         if any(char.isspace() for char in name):
             self.entry_name.set_text("")
-            self.entry_name.set_placeholder_text(_("Please don't type whitespace"))
+            self.open_info_dialog(_("Please don't type whitespace"))
+            self.entry_name.set_placeholder_text(
+                _("Please don't type whitespace"))
             return False
         elif any(not char.isalnum() and not char.isspace() for char in name) or bool(set(name).intersection(set(Turkish_c))):
             self.entry_name.set_text("")
-            self.entry_name.set_placeholder_text(_("Please don't type spacial chracter(.*/şüİ~)"))
+            self.open_info_dialog(
+                _("Please don't type spacial chracter(.*/şüİ~)"))
+            self.entry_name.set_placeholder_text(
+                _("Please don't type spacial chracter(.*/şüİ~)"))
             return False
         return True
-    
+
     def on_btn_about_clicked(self, b):
         self.dialog_about.set_visible(True)
 
@@ -307,13 +340,25 @@ class MainWindow(Gtk.Window):
         self.installer.install_sdkmanager(self.fill_sdks)
         self.dialog_sdkm.set_visible(False)
 
-    def on_cmb_device_type_changed(self, c: Gtk.ComboBox):
-        try:
-            index = c.get_active()
-            self.fill_sdks(index)
-        except Exception as e:
-            print(e)
+    # def on_cmb_device_type_changed(self, c: Gtk.ComboBox):
+    #    try:
+    #        index = c.get_active()
+    #        self.fill_sdks(index)
+    #    except Exception as e:
+    #        print(e)
 
+    def on_btn_chck_device_type_toggled(self, c):
+        if self.btn_chck_playstore.get_active():
+            self.btn_chck_google.set_active(True)
+            # TODO: buraya belki uyarı eklenebilir
+            self.dev_type = 0
+            self.fill_sdks(0)
+        elif self.btn_chck_google.get_active():
+            self.dev_type = 1
+            self.fill_sdks(1)
+        else:
+            self.dev_type = 2
+            self.fill_sdks(2)
 
     def on_chk_btn_term_accept_toggled(self, b):
         if b.get_active():
@@ -324,8 +369,8 @@ class MainWindow(Gtk.Window):
     def on_btn_new_virt_android_clicked(self, b):
         self.is_main = True
         self.entry_name.set_sensitive(True)
-        self.lb_dialog_wait_status=_("Waiting to get andorid sdk list...")
-        self.lb_subpro_output=_("Waiting to get andorid sdk list...")
+        self.lb_dialog_wait_status = _("Waiting to get andorid sdk list...")
+        self.lb_subpro_output = _("Waiting to get andorid sdk list...")
         self.stck_main.set_visible_child_name("box_wait")
         self.installer.get_andorio_list([self.fill_sdks])
 
@@ -372,32 +417,40 @@ class MainWindow(Gtk.Window):
             self.installer.set_configuration(self.get_spn_properties())
             self.fill_properties()
             self.stck_main.set_visible_child_name("box_main")
-    
-    def on_btn_set_pro_back_clicked(self,b):
+
+    def on_btn_set_pro_back_clicked(self, b):
         if self.is_main:  # ? sdk ile yeni oluştur
             self.stck_main.set_visible_child_name("box_android_chose")
         else:  # ? düzenleme
             self.stck_main.set_visible_child_name("box_main")
 
     def on_btn_and_chose_next_clicked(self, b):
-        index =self.cmb_device_type.get_active()
-        index2=self.cmb_sdk_v.get_active()
-        if index == 0:
-            co.toolname = self.installer.gv_list[index2]
-        elif index == 1:
-            co.toolname = self.installer.g_list[index2]
-        elif index == 2:
-            co.toolname = self.installer.n_list[index2]
+
+        index2 = self.cmb_sdk_v.get_active()
+        if self.dev_type == 0:
+            co.toolname = self.installer.gv_list[index2][0]
+        elif self.dev_type == 1:
+            co.toolname = self.installer.g_list[index2][0]
+        elif self.dev_type == 2:
+            co.toolname = self.installer.n_list[index2][0]
         co.droidname = co.toolname.split(";")[1]
         print(co.toolname, co.droidname)
         self.stck_main.set_visible_child_name("box_set_properties")
 
-    def on_btn_and_chose_back_clicked(self,b):
+    def on_btn_and_chose_back_clicked(self, b):
         self.stck_main.set_visible_child_name("box_main")
 
+    def on_dialog_info_destroy(self, d):
+        if not self.is_virt_active:
+            self.destroy()
+        else:
+            self.dialog_info.set_visible(False)
 
     def destroy(self):
-        #TODO: çıkarken emulatör açık kalsın mı sor
+        # TODO: çıkarken emulatör açık kalsın mı sor
         if os.path.exists(co.SDK+"/cmdline-tools/latest/bin/sdkmanager"):
             self.proceses.stop_emulator()
+        if not cv.is_process_runnig:
+            print("siliniyor")
+            self.proceses.delete_avd()
         self.window.destroy()

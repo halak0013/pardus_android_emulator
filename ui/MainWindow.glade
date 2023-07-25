@@ -50,6 +50,66 @@ Ali Rıza Keskin</property>
       </object>
     </child>
   </object>
+  <object class="GtkMessageDialog" id="dialog_info">
+    <property name="can-focus">False</property>
+    <property name="title" translatable="yes">Info</property>
+    <property name="type-hint">dialog</property>
+    <signal name="destroy" handler="on_dialog_info_destroy" swapped="no"/>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="can-focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can-focus">False</property>
+            <property name="margin-start">7</property>
+            <property name="margin-end">7</property>
+            <property name="margin-top">7</property>
+            <property name="margin-bottom">7</property>
+            <property name="homogeneous">True</property>
+            <property name="layout-style">end</property>
+            <child>
+              <object class="GtkButton">
+                <property name="label" translatable="yes">Ok</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <signal name="clicked" handler="on_dialog_info_destroy" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="lb_dialo_info">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="margin-start">7</property>
+            <property name="margin-end">7</property>
+            <property name="margin-top">7</property>
+            <property name="margin-bottom">7</property>
+            <property name="label" translatable="yes">Alert</property>
+            <property name="wrap">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
   <object class="GtkDialog" id="dialog_sdkm">
     <property name="can-focus">False</property>
     <property name="title" translatable="yes">sdk manager not in system</property>
@@ -138,6 +198,7 @@ Do you want to install it?</property>
             <property name="height-request">250</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
+            <property name="hscrollbar-policy">never</property>
             <property name="shadow-type">in</property>
             <child>
               <object class="GtkViewport">
@@ -145,7 +206,6 @@ Do you want to install it?</property>
                 <property name="can-focus">False</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
-                <property name="hscroll-policy">natural</property>
                 <property name="vscroll-policy">natural</property>
                 <child>
                   <object class="GtkLabel" id="lb_licance">
@@ -426,6 +486,7 @@ This is the Android SDK Preview License Agreement (the "License Agreement").
 
 June 2014.</property>
                     <property name="wrap">True</property>
+                    <property name="selectable">True</property>
                   </object>
                 </child>
               </object>
@@ -470,6 +531,7 @@ June 2014.</property>
   </object>
   <object class="GtkWindow" id="main_window">
     <property name="can-focus">False</property>
+    <property name="vexpand">True</property>
     <property name="icon">../data/pardus-android-emulator.svg</property>
     <child>
       <object class="GtkBox">
@@ -1229,15 +1291,35 @@ June 2014.</property>
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkComboBoxText" id="cmb_device_type">
+                          <object class="GtkCheckButton" id="btn_chck_google">
+                            <property name="label" translatable="yes">Google</property>
                             <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <signal name="changed" handler="on_cmb_device_type_changed" swapped="no"/>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">False</property>
+                            <property name="active">True</property>
+                            <property name="draw-indicator">True</property>
+                            <signal name="toggled" handler="on_btn_chck_device_type_toggled" swapped="no"/>
                           </object>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
-                            <property name="position">1</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="btn_chck_playstore">
+                            <property name="label" translatable="yes">Play Store</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">False</property>
+                            <property name="active">True</property>
+                            <property name="draw-indicator">True</property>
+                            <signal name="toggled" handler="on_btn_chck_device_type_toggled" swapped="no"/>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">3</property>
                           </packing>
                         </child>
                       </object>
@@ -2027,34 +2109,50 @@ June 2014.</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkScrolledWindow">
-                    <property name="width-request">300</property>
-                    <property name="height-request">111</property>
+                  <object class="GtkExpander">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="shadow-type">in</property>
-                    <property name="propagate-natural-width">True</property>
+                    <property name="margin-start">13</property>
+                    <property name="margin-end">13</property>
+                    <property name="margin-top">29</property>
+                    <property name="margin-bottom">13</property>
                     <child>
-                      <object class="GtkViewport">
+                      <object class="GtkScrolledWindow" id="detail_commands">
                         <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="vexpand">True</property>
-                        <property name="hscroll-policy">natural</property>
-                        <property name="vscroll-policy">natural</property>
+                        <property name="can-focus">True</property>
+                        <property name="shadow-type">in</property>
+                        <property name="propagate-natural-width">True</property>
                         <child>
-                          <object class="GtkLabel" id="lb_subpro_output">
+                          <object class="GtkViewport">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="wrap">True</property>
+                            <property name="vexpand">True</property>
+                            <property name="hscroll-policy">natural</property>
+                            <property name="vscroll-policy">natural</property>
+                            <child>
+                              <object class="GtkLabel" id="lb_subpro_output">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="wrap">True</property>
+                                <property name="selectable">True</property>
+                              </object>
+                            </child>
                           </object>
                         </child>
+                      </object>
+                    </child>
+                    <child type="label">
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Detial</property>
                       </object>
                     </child>
                   </object>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
-                    <property name="position">1</property>
+                    <property name="position">2</property>
                   </packing>
                 </child>
                 <child>
@@ -2067,7 +2165,22 @@ June 2014.</property>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
-                    <property name="position">2</property>
+                    <property name="position">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkProgressBar" id="prg_bar_proces">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="margin-start">13</property>
+                    <property name="margin-end">13</property>
+                    <property name="margin-top">13</property>
+                    <property name="margin-bottom">13</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">4</property>
                   </packing>
                 </child>
               </object>
