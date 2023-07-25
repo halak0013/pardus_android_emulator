@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-20 19:29+0300\n"
+"POT-Creation-Date: 2023-07-25 08:48+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Muhammet Halak <halakmuhammet145@gmail.com>Language-Team: "
 "Turkish <dev@pardus.org.tr>\n"
@@ -29,22 +29,34 @@ msgstr ""
 "Genel Kamu Lisansı, sürüm 3 ya da sonrası</a> bağlantısına bakın."
 
 #: ui/MainWindow.glade:55
+msgid "Info"
+msgstr "Bilgi"
+
+#: ui/MainWindow.glade:74
+msgid "Ok"
+msgstr "Tamam"
+
+#: ui/MainWindow.glade:101
+msgid "Alert"
+msgstr "Uyarı"
+
+#: ui/MainWindow.glade:115
 msgid "sdk manager not in system"
 msgstr "sdk yöneticisi sisteminizde bulunmamaktadır"
 
-#: ui/MainWindow.glade:69
+#: ui/MainWindow.glade:129
 msgid "Accept Terms"
 msgstr "Kullanım Koşullarını Kabul Et"
 
-#: ui/MainWindow.glade:84
+#: ui/MainWindow.glade:144
 msgid "No"
 msgstr "Hayır"
 
-#: ui/MainWindow.glade:98
+#: ui/MainWindow.glade:158
 msgid "Yes"
 msgstr "Evet"
 
-#: ui/MainWindow.glade:125
+#: ui/MainWindow.glade:185
 msgid ""
 "Your system dosn't have sdk manager. \n"
 "Do you want to install it?"
@@ -52,7 +64,7 @@ msgstr ""
 "Sistemde sdk yöneticisi bulunmamaktadır. \n"
 "Yüklemek istiyor musunuz?"
 
-#: ui/MainWindow.glade:154
+#: ui/MainWindow.glade:214
 msgid ""
 "Terms and Conditions\n"
 "\n"
@@ -723,217 +735,230 @@ msgid ""
 "June 2014."
 msgstr ""
 
-#: ui/MainWindow.glade:521
+#: ui/MainWindow.glade:583
 msgid "Virtual Device List"
 msgstr "Sanal Cihaz Listesi"
 
-#: ui/MainWindow.glade:582
+#: ui/MainWindow.glade:644
 msgid "Properties"
 msgstr "Özellikler"
 
-#: ui/MainWindow.glade:616
+#: ui/MainWindow.glade:678
 msgid "Ram: "
 msgstr "Ram: "
 
-#: ui/MainWindow.glade:631 ui/MainWindow.glade:672 ui/MainWindow.glade:713
-#: ui/MainWindow.glade:754 ui/MainWindow.glade:795 ui/MainWindow.glade:853
-#: ui/MainWindow.glade:894 ui/MainWindow.glade:935 ui/MainWindow.glade:976
-#: ui/MainWindow.glade:1017 ui/MainWindow.glade:2064
+#: ui/MainWindow.glade:693 ui/MainWindow.glade:734 ui/MainWindow.glade:775
+#: ui/MainWindow.glade:816 ui/MainWindow.glade:857 ui/MainWindow.glade:915
+#: ui/MainWindow.glade:956 ui/MainWindow.glade:997 ui/MainWindow.glade:1038
+#: ui/MainWindow.glade:1079 ui/MainWindow.glade:2162
 msgid "None"
 msgstr "Belli Değil"
 
-#: ui/MainWindow.glade:657
+#: ui/MainWindow.glade:719
 msgid "Disk Partion: "
 msgstr "Disk Bölümü: "
 
-#: ui/MainWindow.glade:698
+#: ui/MainWindow.glade:760
 msgid "Height: "
 msgstr "Yükseklik: "
 
-#: ui/MainWindow.glade:739
+#: ui/MainWindow.glade:801
 msgid "Width: "
 msgstr "Genişlik: "
 
-#: ui/MainWindow.glade:780
+#: ui/MainWindow.glade:842
 msgid "Display Density: "
 msgstr "Ekran Yoğunluğu: "
 
-#: ui/MainWindow.glade:838
+#: ui/MainWindow.glade:900
 msgid "Keyboard: "
 msgstr "Klavye: "
 
-#: ui/MainWindow.glade:879
+#: ui/MainWindow.glade:941
 msgid "Gpu: "
 msgstr "GPU: "
 
-#: ui/MainWindow.glade:920
+#: ui/MainWindow.glade:982
 msgid "SD Card: "
 msgstr "SD Kart: "
 
-#: ui/MainWindow.glade:961
+#: ui/MainWindow.glade:1023
 msgid "Gsm Mode: "
 msgstr "GSM Modu: "
 
-#: ui/MainWindow.glade:1002
+#: ui/MainWindow.glade:1064
 msgid "Cpu: "
 msgstr "İşlemci: "
 
-#: ui/MainWindow.glade:1085
+#: ui/MainWindow.glade:1147
 msgid "New Virtual Android"
 msgstr "Yeni Sanal Android"
 
-#: ui/MainWindow.glade:1099
+#: ui/MainWindow.glade:1161
 msgid "Edit"
 msgstr "Düzenle"
 
-#: ui/MainWindow.glade:1113
+#: ui/MainWindow.glade:1175
 msgid "Delete"
 msgstr "Sil"
 
-#: ui/MainWindow.glade:1127
+#: ui/MainWindow.glade:1189
 msgid "Start"
 msgstr "Başlat"
 
-#: ui/MainWindow.glade:1141
+#: ui/MainWindow.glade:1203
 msgid "Force Stop"
 msgstr "Zorla Durdur"
 
-#: ui/MainWindow.glade:1155
+#: ui/MainWindow.glade:1217
 msgid "Stop"
 msgstr "Durdur"
 
-#: ui/MainWindow.glade:1177
+#: ui/MainWindow.glade:1239
 msgid "box_main"
 msgstr "ana_kutu"
 
-#: ui/MainWindow.glade:1223
+#: ui/MainWindow.glade:1285
 msgid "Device Type"
 msgstr "Cihaz Türü"
 
-#: ui/MainWindow.glade:1259
+#: ui/MainWindow.glade:1295
+msgid "Google"
+msgstr ""
+
+#: ui/MainWindow.glade:1311
+msgid "Play Store"
+msgstr ""
+
+#: ui/MainWindow.glade:1341
 msgid "Android Sdk Version"
 msgstr "Android Sdk Sürümü"
 
-#: ui/MainWindow.glade:1293 ui/MainWindow.glade:1960
+#: ui/MainWindow.glade:1375 ui/MainWindow.glade:2042
 msgid "Back"
 msgstr "Geri"
 
-#: ui/MainWindow.glade:1308 ui/MainWindow.glade:1975
+#: ui/MainWindow.glade:1390 ui/MainWindow.glade:2057
 msgid "Next"
 msgstr "Sonraki"
 
-#: ui/MainWindow.glade:1338
+#: ui/MainWindow.glade:1420
 msgid "box_android_chose"
 msgstr "android_secim_kutusu"
 
-#: ui/MainWindow.glade:1368
+#: ui/MainWindow.glade:1450
 msgid "Ram"
 msgstr "RAM"
 
-#: ui/MainWindow.glade:1397
+#: ui/MainWindow.glade:1479
 msgid "2048"
 msgstr "2048"
 
-#: ui/MainWindow.glade:1433
+#: ui/MainWindow.glade:1515
 msgid "Disk Partion"
 msgstr "Disk Bölümü"
 
-#: ui/MainWindow.glade:1462
+#: ui/MainWindow.glade:1544
 msgid "20"
 msgstr "20"
 
-#: ui/MainWindow.glade:1502
+#: ui/MainWindow.glade:1584
 msgid "Height"
 msgstr "Yükseklik"
 
-#: ui/MainWindow.glade:1514 ui/MainWindow.glade:1553
+#: ui/MainWindow.glade:1596 ui/MainWindow.glade:1635
 msgid "720"
 msgstr "720"
 
-#: ui/MainWindow.glade:1541
+#: ui/MainWindow.glade:1623
 msgid "Width"
 msgstr "Genişlik"
 
-#: ui/MainWindow.glade:1588
+#: ui/MainWindow.glade:1670
 msgid "Display Density"
 msgstr "Ekran Yoğunluğu"
 
-#: ui/MainWindow.glade:1617
+#: ui/MainWindow.glade:1699
 msgid "160"
 msgstr "160"
 
-#: ui/MainWindow.glade:1664
+#: ui/MainWindow.glade:1746
 msgid "Name"
 msgstr "İsim"
 
-#: ui/MainWindow.glade:1691
+#: ui/MainWindow.glade:1773
 msgid "Keyboard"
 msgstr "Klavye"
 
-#: ui/MainWindow.glade:1730
+#: ui/MainWindow.glade:1812
 msgid "Gpu"
 msgstr "GPU"
 
-#: ui/MainWindow.glade:1769
+#: ui/MainWindow.glade:1851
 msgid "SD Card"
 msgstr "SD Kart"
 
-#: ui/MainWindow.glade:1807
+#: ui/MainWindow.glade:1889
 msgid "Gsm Mode"
 msgstr "GSM Modu"
 
-#: ui/MainWindow.glade:1836
+#: ui/MainWindow.glade:1918
 msgid "CPU Core"
 msgstr "İşlemci çekirdeği"
 
-#: ui/MainWindow.glade:1895
+#: ui/MainWindow.glade:1977
 msgid "Orientation"
 msgstr "Cihaz Yönü"
 
-#: ui/MainWindow.glade:1910
+#: ui/MainWindow.glade:1992
 msgid "Landscape"
 msgstr "Yatay"
 
-#: ui/MainWindow.glade:1925
+#: ui/MainWindow.glade:2007
 msgid "Portrait"
 msgstr "Dikey"
 
-#: ui/MainWindow.glade:2005
+#: ui/MainWindow.glade:2087
 msgid "box_set_properties"
 msgstr "ozellikleri_ayarla_kutusu"
 
-#: ui/MainWindow.glade:2076
+#: ui/MainWindow.glade:2148
+msgid "Detial"
+msgstr "Detay"
+
+#: ui/MainWindow.glade:2189
 msgid "box_wait"
 msgstr "bekleme_kutusu"
 
-#: ui/MainWindow.glade:2093
+#: ui/MainWindow.glade:2206
 msgid "Pardus Android Emulator"
 msgstr "Pardus Android Emülatörü"
 
-#: src/MainWindow.py:71
-msgid "With Google and Play Store"
-msgstr "Google ve Play Store ile"
+#: src/MainWindow.py:51
+msgid "Your CPU isn't support virtualization"
+msgstr "İşlemciniz sanallaştırmayı desteklemiyor. Biostan lütfen açınız"
 
-#: src/MainWindow.py:72
-msgid "With Google without Play Store"
-msgstr "Google olup Play Store olmadan"
-
-#: src/MainWindow.py:73
-msgid "Without Google and Play Store"
-msgstr "Google ve Play Store olmadan"
-
-#: src/MainWindow.py:282
+#: src/MainWindow.py:308 src/MainWindow.py:310
 msgid "Please type different name"
 msgstr "Lütfen farklı bir isim girin"
 
-#: src/MainWindow.py:291
+#: src/MainWindow.py:319 src/MainWindow.py:321
 msgid "Please don't type whitespace"
 msgstr "Lütfen boşluk burakmayın"
 
-#: src/MainWindow.py:295
+#: src/MainWindow.py:326 src/MainWindow.py:328
 msgid "Please don't type spacial chracter(.*/şüİ~)"
 msgstr "Lütfen özel karakter(.*/şüİ~) kullanmayın"
 
-#: src/MainWindow.py:327 src/MainWindow.py:328
+#: src/MainWindow.py:372 src/MainWindow.py:373
 msgid "Waiting to get andorid sdk list..."
 msgstr "Android sdk listesi bekleniyor..."
+
+#~ msgid "With Google and Play Store"
+#~ msgstr "Google ve Play Store ile"
+
+#~ msgid "With Google without Play Store"
+#~ msgstr "Google olup Play Store olmadan"
+
+#~ msgid "Without Google and Play Store"
+#~ msgstr "Google ve Play Store olmadan"

@@ -54,10 +54,10 @@ data_files = [
     ("/usr/share/pardus/pardus-android-emulator/src",
      ["src/AsyncFileDownloader.py",
       "src/CommandRunner.py",
-      "src/Istaller.py",
+      "src/Installer.py",
       "src/MainWindow.py",
       "src/Main.py",
-      "src/Proceses.py"]),
+      "src/Process.py"]),
 
     ("/usr/share/pardus/pardus-android-emulator/src/static",
      ["src/static/comands.py"]),
