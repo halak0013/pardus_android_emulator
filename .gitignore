@@ -162,6 +162,5 @@ cython_debug/
 
 *.glade~
 *.glade#
-pardus-android-emulator-build-deps_1.0_amd64.buildinfo
-.gitignore
-pardus-android-emulator-build-deps_1.0_amd64.changes
+pardus-android-emulator-build-deps*
+
