@@ -944,7 +944,7 @@ msgstr "Lütfen farklı bir isim girin"
 
 #: src/MainWindow.py:319 src/MainWindow.py:321
 msgid "Please don't type whitespace"
-msgstr "Lütfen boşluk burakmayın"
+msgstr "Lütfen boşluk bırakmayın"
 
 #: src/MainWindow.py:326 src/MainWindow.py:328
 msgid "Please don't type spacial character(.*/şüİ~)"

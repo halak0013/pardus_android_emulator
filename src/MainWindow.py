@@ -314,7 +314,7 @@ class MainWindow(Gtk.Window):
     def is_word(self):
         name = self.entry_name.get_text()
         Turkish_c = "ğĞıİşŞüÜöÖçÇ"
-        if any(char.isspace() for char in name):
+        if any(char.isspace() for char in name) or name=="":
             self.entry_name.set_text("")
             self.open_info_dialog(_("Please don't type whitespace"))
             self.entry_name.set_placeholder_text(
