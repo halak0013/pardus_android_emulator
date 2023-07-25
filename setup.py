@@ -6,7 +6,7 @@ import os
 import subprocess
 
 
-def genereate_mo_files():
+def generate_mo_files():
     podir = "po"
     mo = []
     for po in os.listdir(podir):
@@ -60,7 +60,8 @@ data_files = [
       "src/Process.py"]),
 
     ("/usr/share/pardus/pardus-android-emulator/src/static",
-     ["src/static/comands.py"]),
+     ["src/static/commands.py",
+      "src/static/android_versions.py",]),
 
     ("/usr/share/pardus/pardus-android-emulator/data",
      ["data/pardus-android-emulator.svg",
@@ -72,7 +73,7 @@ data_files = [
       "data/img/new_device.png",
       "data/img/phone.png",
       ]),
-] + genereate_mo_files()
+] + generate_mo_files()
 
 setup(
     name="pardus-android-emulator",

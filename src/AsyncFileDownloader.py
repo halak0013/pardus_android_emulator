@@ -11,7 +11,7 @@ gi.require_version('Gtk', '3.0')
 
 
 class AsyncFileDownloader:
-    is_thread_runnig = True
+    is_thread_running = True
 
     def __init__(self, url):
         self.url = url
@@ -42,7 +42,7 @@ class AsyncFileDownloader:
                 path = self.url.split('/')[-1] if path == None else path
 
                 with open(path, 'wb') as file:
-                    while self.is_thread_runnig:
+                    while self.is_thread_running:
                         # ? içeriği 1 kb olarak okuyoz
                         chunk = await response.content.read(1024)
                         if not chunk:

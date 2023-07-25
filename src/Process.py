@@ -1,6 +1,6 @@
 from gi.repository import GLib, Gtk
 from CommandRunner import CommandRunner
-from static.comands import Commands as co
+from static.commands import Commands as co
 from static.common_vals import Common_vals as cv
 
 import shutil
@@ -9,7 +9,7 @@ import gi
 gi.require_version("Gtk", "3.0")
 
 
-class Proceses:
+class Processes:
     def __init__(self):
         self.lb_subpro_output = cv.lb_subpro_output
         self.lb_wait_status = cv.lb_dialog_wait_status
@@ -19,10 +19,10 @@ class Proceses:
 
     def get_init_variables(self, fn):
         self.avd_lst = []
-        comand_runner = CommandRunner(
+        command_runner = CommandRunner(
             co.avd_lst_c, fun_with_output=[self.fill_avd_lst]+fn)
-        comand_runner.run()
-        del comand_runner
+        command_runner.run()
+        del command_runner
 
     def fill_avd_lst(self, output):
         self.avd_lst = output.strip().split("\n")
@@ -66,11 +66,11 @@ class Proceses:
 
     def run_avd(self):
         print(co.droidname, co.toolname, co.avd_name)
-        comand_runner = CommandRunner(
-            co.get_android_comand(False), fun_with_paramaters=[
+        command_runner = CommandRunner(
+            co.get_android_command(False), fun_with_parameters=[
                 lambda: self.go_to_page("box_main")])
-        comand_runner.run()
-        del comand_runner
+        command_runner.run()
+        del command_runner
 
     def delete_avd(self):
         name = co.avd_name
@@ -90,9 +90,9 @@ class Proceses:
 
     def stop_emulator(self):
         print(co.adb_kill)
-        comand_runner = CommandRunner(co.adb_kill)
-        comand_runner.run()
-        del comand_runner
+        command_runner = CommandRunner(co.adb_kill)
+        command_runner.run()
+        del command_runner
 
     def check_virtualization_support(self):
         intel_path = "/sys/module/kvm_intel/parameters/nested"

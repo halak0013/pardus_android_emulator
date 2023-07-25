@@ -1,10 +1,10 @@
 from gi.repository import GLib, Gtk
 from AsyncFileDownloader import AsyncFileDownloader
 from CommandRunner import CommandRunner
-from static.comands import Commands as co
+from static.commands import Commands as co
 from static.common_vals import Common_vals as cv
 from bs4 import BeautifulSoup as bs
-import static.andorid_versions as avd_ver
+import static.android_versions as avd_ver
 import requests
 import threading
 import os
@@ -47,20 +47,20 @@ class Installer:
         asyncio.run(self.main())
 
     async def main(self):
-        comand_runner = CommandRunner(
-            co.cmd_install_sdk_maanger, fun_with_output=[self.get_andorio_list, self.fill_sdk])
+        command_runner = CommandRunner(
+            co.cmd_install_sdk_manger, fun_with_output=[self.get_android_list, self.fill_sdk])
         await self.downloader.download_file("/tmp/cmdline-tools.zip", "/tmp/cmdline-tools.zip",
-                                            co.SDK, f_update=comand_runner.run)
+                                            co.SDK, f_update=command_runner.run)
         # ? install sdk manager
         os.makedirs(co.HOME+"/.android-emulator/userdata/")
 
-    def get_andorio_list(self, update_sdk_cmb):
-        comand_runner = CommandRunner(
+    def get_android_list(self, update_sdk_cmb):
+        command_runner = CommandRunner(
             co.cmd_system_image, fun_with_output=[self.fill_android_sdk], 
-            fun_with_paramaters=update_sdk_cmb+[
+            fun_with_parameters=update_sdk_cmb+[
                 lambda : self.go_to_sdk()])
-        comand_runner.run()
-        del comand_runner
+        command_runner.run()
+        del command_runner
 
     def fill_android_sdk(self, output):
         self.gv_list = []
@@ -107,17 +107,17 @@ class Installer:
                                       )
         return processed_data[0].get("href")
 
-    def intall_system_image(self, datas: dict, fn_up):
+    def install_system_image(self, datas: dict, fn_up):
         co.avd_name = datas["name"]
-        comand_runner = CommandRunner(
-            co.get_android_comand(
-                True), fun_with_paramaters=[
+        command_runner = CommandRunner(
+            co.get_android_command(
+                True), fun_with_parameters=[
                 lambda: self.set_configuration(datas),
                 lambda: self.go_to_main(),
                 lambda: os.makedirs(f"{co.HOME}/.android-emulator/userdata/{co.avd_name}")
             ]+fn_up)
-        comand_runner.run()
-        del comand_runner
+        command_runner.run()
+        del command_runner
 
     def go_to_main(self):
         GLib.idle_add(self.change_stack_page, "box_main")

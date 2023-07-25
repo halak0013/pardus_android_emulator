@@ -1,6 +1,6 @@
 from Installer import Installer
-from Process import Proceses
-from static.comands import Commands as co
+from Process import Processes
+from static.commands import Commands as co
 from static.common_vals import Common_vals as cv
 import locale
 from locale import gettext as _
@@ -46,7 +46,7 @@ class MainWindow(Gtk.Window):
         self.init_variables()
 
         self.window.show_all()
-        if not self.proceses.check_virtualization_support():
+        if not self.processes.check_virtualization_support():
             self.is_virt_active = False
             self.open_info_dialog(_("Your CPU isn't support virtualization"))
         elif not self.installer.check_sdkm():
@@ -73,13 +73,13 @@ class MainWindow(Gtk.Window):
         self.is_virt_active = True
         self.dev_type = 0
 
-        self.proceses = Proceses()
+        self.processes = Processes()
 
         self.dialog_sdkm.set_modal(True)
         self.dialog_info.set_modal(True)
         self.btn_sdkm_yes.set_sensitive(False)
 
-        self.proceses.get_init_variables(
+        self.processes.get_init_variables(
             [self.fill_avd_list, self.fill_properties])
         self.fill_cpu_cores()
         self.active_button(True)
@@ -91,8 +91,8 @@ class MainWindow(Gtk.Window):
 
         self.dialog_info: Gtk.MessageDialog = self.builder.get_object(
             "dialog_info")
-        self.lb_dialo_info: Gtk.Label = self.builder.get_object(
-            "lb_dialo_info")
+        self.lb_dialog_info: Gtk.Label = self.builder.get_object(
+            "lb_dialog_info")
 
         self.dialog_sdkm: Gtk.Dialog = self.builder.get_object("dialog_sdkm")
         self.btn_sdkm_yes: Gtk.Button = self.builder.get_object("btn_sdkm_yes")
@@ -164,9 +164,9 @@ class MainWindow(Gtk.Window):
         self.lb_ram_p: Gtk.Label = self.builder.get_object("lb_ram_p")
         self.lb_disk_par_p: Gtk.Label = self.builder.get_object(
             "lb_disk_par_p")
-        self.lb_hegiht_p: Gtk.Label = self.builder.get_object("lb_hegiht_p")
+        self.lb_height_p: Gtk.Label = self.builder.get_object("lb_hegiht_p")
         self.lb_width_p: Gtk.Label = self.builder.get_object("lb_width_p")
-        self.lb_desity_p: Gtk.Label = self.builder.get_object("lb_desity_p")
+        self.lb_density_p: Gtk.Label = self.builder.get_object("lb_desity_p")
         self.lb_keyboard_p: Gtk.Label = self.builder.get_object(
             "lb_keyboard_p")
         self.entry_name: Gtk.Entry = self.builder.get_object("entry_name")
@@ -203,13 +203,13 @@ class MainWindow(Gtk.Window):
     def fill_avd_list(self, o=None):
         for child in self.lst_virt_mach.get_children():
             self.lst_virt_mach.remove(child)
-        for r in self.proceses.avd_lst:
+        for r in self.processes.avd_lst:
             print("r: ", r)
             self.lst_virt_mach.add(Gtk.Label(label=r))
         self.lst_virt_mach.show_all()
         first_row = self.lst_virt_mach.get_row_at_index(0)
         self.lst_virt_mach.select_row(first_row)
-        GLib.idle_add(self.avd_emmty_btn, self.proceses.avd_lst[0])
+        GLib.idle_add(self.avd_empty_btn, self.processes.avd_lst[0])
 
     def get_spn_properties(self):
         res = {}
@@ -229,11 +229,11 @@ class MainWindow(Gtk.Window):
         return res
 
     def fill_properties(self, o=None):
-        if len(self.proceses.avd_lst) != 0:
+        if len(self.processes.avd_lst) != 0:
             co.avd_name = self.lst_virt_mach.get_selected_row().get_child().get_text()
             print(co.avd_name, "****")
             if co.avd_name != "":
-                datas = self.proceses.get_configuration()
+                datas = self.processes.get_configuration()
                 if not self.is_main:
                     self.entry_name.set_text(co.avd_name)
                     self.spn_ram.set_value(float(datas["ram"][:-1]))
@@ -253,9 +253,9 @@ class MainWindow(Gtk.Window):
                 else:
                     self.lb_ram_p.set_text(datas["ram"])
                     self.lb_disk_par_p.set_text(datas["disk"])
-                    self.lb_hegiht_p.set_text(datas["display_height"])
+                    self.lb_height_p.set_text(datas["display_height"])
                     self.lb_width_p.set_text(datas["display_width"])
-                    self.lb_desity_p.set_text(datas["density"])
+                    self.lb_density_p.set_text(datas["density"])
                     self.lb_keyboard_p.set_text(str(datas["keyboard"]))
                     self.lb_gpu_p.set_text(str(datas["gpu"]))
                     self.lb_sd_card_p.set_text(str(datas["sd_card"]))
@@ -264,7 +264,7 @@ class MainWindow(Gtk.Window):
                     self.lb_sys_name.set_text(datas["sys_name"])
 
     def open_info_dialog(self, message):
-        self.lb_dialo_info.set_text(message)
+        self.lb_dialog_info.set_text(message)
         self.dialog_info.set_visible(True)
 
     def active_button(self, val: bool):
@@ -274,7 +274,7 @@ class MainWindow(Gtk.Window):
         self.btn_start.set_sensitive(val)
         self.btn_stop.set_sensitive(not val)
 
-    def avd_emmty_btn(self, output):
+    def avd_empty_btn(self, output):
         if output != "":
             val = True
         else:
@@ -302,7 +302,7 @@ class MainWindow(Gtk.Window):
 
     def is_same_avd(self):
         name = self.entry_name.get_text()
-        for a in self.proceses.avd_lst:
+        for a in self.processes.avd_lst:
             if name == a:
                 self.entry_name.set_text("")
                 self.open_info_dialog(_("Please type different name"))
@@ -323,9 +323,9 @@ class MainWindow(Gtk.Window):
         elif any(not char.isalnum() and not char.isspace() for char in name) or bool(set(name).intersection(set(Turkish_c))):
             self.entry_name.set_text("")
             self.open_info_dialog(
-                _("Please don't type spacial chracter(.*/şüİ~)"))
+                _("Please don't type spacial character(.*/şüİ~)"))
             self.entry_name.set_placeholder_text(
-                _("Please don't type spacial chracter(.*/şüİ~)"))
+                _("Please don't type spacial character(.*/şüİ~)"))
             return False
         return True
 
@@ -372,19 +372,19 @@ class MainWindow(Gtk.Window):
         self.lb_dialog_wait_status = _("Waiting to get andorid sdk list...")
         self.lb_subpro_output = _("Waiting to get andorid sdk list...")
         self.stck_main.set_visible_child_name("box_wait")
-        self.installer.get_andorio_list([self.fill_sdks])
+        self.installer.get_android_list([self.fill_sdks])
 
     def on_btn_force_stop_clicked(self, b):
         self.active_button(True)
-        self.proceses.stop_emulator()
+        self.processes.stop_emulator()
 
     def on_btn_stop_clicked(self, b):
         self.active_button(True)
-        self.proceses.stop_emulator()
+        self.processes.stop_emulator()
 
     def on_btn_start_clicked(self, b):
         self.active_button(False)
-        self.proceses.run_avd()
+        self.processes.run_avd()
 
     def on_btn_edit_clicked(self, b):
         self.is_main = False
@@ -393,8 +393,8 @@ class MainWindow(Gtk.Window):
         self.stck_main.set_visible_child_name("box_set_properties")
 
     def on_btn_delete_clicked(self, b):
-        self.proceses.delete_avd()
-        self.proceses.get_init_variables(
+        self.processes.delete_avd()
+        self.processes.get_init_variables(
             [self.fill_avd_list, self.fill_properties])
 
     def on_lst_virt_mach_row_activated(self, list_box, row):
@@ -408,8 +408,8 @@ class MainWindow(Gtk.Window):
         if self.is_main:  # ? sdk ile yeni oluştur
             if self.is_same_avd() and self.is_word():
                 self.stck_main.set_visible_child_name("box_wait")
-                self.installer.intall_system_image(self.get_spn_properties(), fn_up=[
-                    lambda: self.proceses.get_init_variables(
+                self.installer.install_system_image(self.get_spn_properties(), fn_up=[
+                    lambda: self.processes.get_init_variables(
                         [self.fill_avd_list, self.fill_properties])
                 ])
         else:  # ? düzenleme
@@ -449,8 +449,8 @@ class MainWindow(Gtk.Window):
     def destroy(self):
         # TODO: çıkarken emulatör açık kalsın mı sor
         if os.path.exists(co.SDK+"/cmdline-tools/latest/bin/sdkmanager"):
-            self.proceses.stop_emulator()
-        if not cv.is_process_runnig:
+            self.processes.stop_emulator()
+        if not cv.is_process_running:
             print("siliniyor")
-            self.proceses.delete_avd()
+            self.processes.delete_avd()
         self.window.destroy()

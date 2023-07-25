@@ -3,7 +3,7 @@ import os
 
 class Commands:
 
-    # ? envirolnments
+    # ? environments
     HOME = os.path.expanduser("~")
     SDK=HOME+"/.android-emulator/sdk"
     ADB=SDK+"/platform-tools/adb"
@@ -21,7 +21,7 @@ class Commands:
     #env["LC_ALL=C"] = "C"
 
 
-    cmd_install_sdk_maanger=f'''
+    cmd_install_sdk_manger=f'''
 chmod +x {SDK}/cmdline-tools/latest/bin/*
 yes | sdkmanager --channel=0 --sdk_root=$HOME/.android-emulator/sdk tools
     '''
@@ -41,8 +41,8 @@ yes | sdkmanager --channel=0 --sdk_root=$HOME/.android-emulator/sdk tools
     adb_kill=f"{ADB} devices | grep emulator | cut -f1 | while read line; do {ADB} -s $line emu kill; done"
 
     @classmethod
-    def get_android_comand(self,ins=False):
-        comand=""
+    def get_android_command(self,ins=False):
+        command=""
         if ins:
             return f'''
                 yes | sdkmanager --channel=0 --sdk_root={self.SDK} "{self.toolname}"

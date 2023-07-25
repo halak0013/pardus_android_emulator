@@ -2,19 +2,19 @@ pardus-android-emulator (1.1) stable; urgency=medium
 
   [ Muhammet Halak ]
 
-  * Code tamplet convert to Pardus standart
+  * Code template convert to Pardus standard
   * Changing button activation for avd list lb_wait_status
-  * Adding back button in set properties and sdk chosing part
-  * Name bugs fixing: whitespace, spacialchracter and same name
+  * Adding back button in set properties and sdk choosing part
+  * Name bugs fixing: whitespace, spacial character and same name
   * Translation update
-  * Added waiting part when switching to sdk chosing part
+  * Added waiting part when switching to sdk choosing part
   * ComboBox first initialization bug fixing
-  * Small ui improvment
-  * Icon path and .desktop file improvment
+  * Small ui improvement
+  * Icon path and .desktop file improvement
   * Added License alert for google license
 
 
 
   * Initial Commit
 
- -- Muhammet Halak <halakmuhammet145@gmail.com>  Tues, 18 July 2023 15:54:13 +0300
+ -- Muhammet Halak <halakmuhammet145@gmail.com>  Tue, 18 Jul 2023 15:54:13 +0300

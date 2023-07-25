@@ -19,9 +19,9 @@ You can:
 
 `pip install -r requirements.txt`
 
-# Runnig
+# Running
 
-`python3 main.py`
+`python3 Main.py`
 
 # Building
 

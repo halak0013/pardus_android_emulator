@@ -4,7 +4,7 @@ class Common_vals:
     prg_bar_process=None
     stck_main=None
 
-    is_thread_runnig=True #TODO: thread durdurma için bunu ekle
-    is_process_runnig=True
+    is_thread_running=True #TODO: thread durdurma için bunu ekle
+    is_process_running=True
 
     def __init__(self):pass

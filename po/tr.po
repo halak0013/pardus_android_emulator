@@ -947,7 +947,7 @@ msgid "Please don't type whitespace"
 msgstr "Lütfen boşluk burakmayın"
 
 #: src/MainWindow.py:326 src/MainWindow.py:328
-msgid "Please don't type spacial chracter(.*/şüİ~)"
+msgid "Please don't type spacial character(.*/şüİ~)"
 msgstr "Lütfen özel karakter(.*/şüİ~) kullanmayın"
 
 #: src/MainWindow.py:372 src/MainWindow.py:373

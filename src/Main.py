@@ -19,8 +19,8 @@ class Application(Gtk.Application):
         self.window = MainWindow(self)
 
     def onExit(self,e):
-        AsyncFileDownloader.is_thread_runnig=False
-        CommandRunner.is_thread_runnig=False
+        AsyncFileDownloader.is_thread_running=False
+        CommandRunner.is_thread_running=False
         self.window.destroy()
 
 
