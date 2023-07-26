@@ -68,6 +68,7 @@ class Installer:
         self.n_list = []
 
         lst = output.strip().split("\n")
+        lst.reverse()
         for e in lst:
             if e != "":
                 e = e.split()[0]
@@ -79,14 +80,14 @@ class Installer:
                         self.g_list.append([e, ver])
                 else:
                     self.n_list.append([e, ver])
-        self.gv_list.reverse()
-        self.g_list.reverse()
-        self.n_list.reverse()
         print(self.n_list)
         GLib.idle_add(self.change_stack_page, "box_android_chose")
 
     def find_avd_ver(self, ver):
-        return avd_ver.android_version[ver]
+        if ver in avd_ver.android_version:
+            return avd_ver.android_version[ver]
+        else:
+            return "Sdk "+ver
 
     def change_stack_page(self, page):
         self.stck_main.set_visible_child_name(page)
