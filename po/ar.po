@@ -1,0 +1,283 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-31 19:22+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ui/MainWindow.glade:18
+msgid ""
+"Bu program kesinlikle hiçbir garanti vermiyor.\n"
+"Ayrıntılar için <a href=\"https://www.gnu.org/licenses/gpl-3.0.html\">GNU Genel Kamu Lisansı, sürüm 3 ya da sonrası</a> bağlantısına bakın."
+msgstr "برنامج kesinlikle hiçbir garanti vermiyor.\n"
+
+#: ui/MainWindow.glade:55
+msgid "Info"
+msgstr "معلومات"
+
+#: ui/MainWindow.glade:74
+msgid "Ok"
+msgstr "نعم"
+
+#: ui/MainWindow.glade:101
+msgid "Alert"
+msgstr "يُحذًِر"
+
+#: ui/MainWindow.glade:115
+msgid "sdk manager not in system"
+msgstr "مدير sdk ليس في النظام"
+
+#: ui/MainWindow.glade:129
+msgid "Accept Terms"
+msgstr "قبول الشروط"
+
+#: ui/MainWindow.glade:144
+msgid "No"
+msgstr "لا"
+
+#: ui/MainWindow.glade:158
+msgid "Yes"
+msgstr "نعم"
+
+#: ui/MainWindow.glade:185
+msgid ""
+"Your system dosn't have sdk manager. \n"
+"Do you want to install it?"
+msgstr ""
+"لا يحتوي نظامك على مدير sdk.\n"
+"هل تريد تثبيته ؟ "
+
+#: ui/MainWindow.glade:583
+msgid "Virtual Device List"
+msgstr "قائمة الأجهزة الافتراضية"
+
+#: ui/MainWindow.glade:644
+msgid "Properties"
+msgstr "ملكيات"
+
+#: ui/MainWindow.glade:678
+msgid "Ram: "
+msgstr "كبش:"
+
+#: ui/MainWindow.glade:693 ui/MainWindow.glade:734 ui/MainWindow.glade:775
+#: ui/MainWindow.glade:816 ui/MainWindow.glade:857 ui/MainWindow.glade:915
+#: ui/MainWindow.glade:956 ui/MainWindow.glade:997 ui/MainWindow.glade:1038
+#: ui/MainWindow.glade:1079 ui/MainWindow.glade:2191
+msgid "None"
+msgstr "لا أحد"
+
+#: ui/MainWindow.glade:719
+msgid "Disk Partion: "
+msgstr "قسم القرص:"
+
+#: ui/MainWindow.glade:760
+msgid "Height: "
+msgstr "ارتفاع:"
+
+#: ui/MainWindow.glade:801
+msgid "Width: "
+msgstr "عرض:"
+
+#: ui/MainWindow.glade:842
+msgid "Display Density: "
+msgstr "كثافة العرض:"
+
+#: ui/MainWindow.glade:900
+msgid "Keyboard: "
+msgstr "لوحة المفاتيح:"
+
+#: ui/MainWindow.glade:941
+msgid "Gpu: "
+msgstr "وحدة معالجة الرسومات:"
+
+#: ui/MainWindow.glade:982
+msgid "SD Card: "
+msgstr "بطاقة الذاكرة:"
+
+#: ui/MainWindow.glade:1023
+msgid "Gsm Mode: "
+msgstr "وضع جي إس إم:"
+
+#: ui/MainWindow.glade:1064
+msgid "Cpu: "
+msgstr "وحدة المعالجة المركزية:"
+
+#: ui/MainWindow.glade:1147
+msgid "New Virtual Android"
+msgstr "Android الظاهري الجديد"
+
+#: ui/MainWindow.glade:1161
+msgid "Edit"
+msgstr "يحرر"
+
+#: ui/MainWindow.glade:1175
+msgid "Delete"
+msgstr "يمسح"
+
+#: ui/MainWindow.glade:1189
+msgid "Start"
+msgstr "يبدأ"
+
+#: ui/MainWindow.glade:1217
+msgid "Factory Setting"
+msgstr "اعدادات المصنع"
+
+#: ui/MainWindow.glade:1231
+msgid "Stop"
+msgstr "قف"
+
+#: ui/MainWindow.glade:1245
+msgid "Force Stop"
+msgstr "توقف إجباري"
+
+#: ui/MainWindow.glade:1267
+msgid "box_main"
+msgstr "مربع_الرئيسية"
+
+#: ui/MainWindow.glade:1313
+msgid "Device Type"
+msgstr "نوع الجهاز"
+
+#: ui/MainWindow.glade:1323
+msgid "Google"
+msgstr "جوجل"
+
+#: ui/MainWindow.glade:1339
+msgid "Play Store"
+msgstr "متجر Play"
+
+#: ui/MainWindow.glade:1369
+msgid "Android Sdk Version"
+msgstr "إصدار Android Sdk"
+
+#: ui/MainWindow.glade:1403 ui/MainWindow.glade:2070
+msgid "Back"
+msgstr "خلف"
+
+#: ui/MainWindow.glade:1418 ui/MainWindow.glade:2085
+msgid "Next"
+msgstr "التالي"
+
+#: ui/MainWindow.glade:1448
+msgid "box_android_chose"
+msgstr "box_android_chose"
+
+#: ui/MainWindow.glade:1478
+msgid "Ram"
+msgstr "كبش"
+
+#: ui/MainWindow.glade:1507
+msgid "2048"
+msgstr "2048"
+
+#: ui/MainWindow.glade:1543
+msgid "Disk Partion"
+msgstr "قسم القرص"
+
+#: ui/MainWindow.glade:1572
+msgid "20"
+msgstr "20"
+
+#: ui/MainWindow.glade:1612
+msgid "Height"
+msgstr "ارتفاع"
+
+#: ui/MainWindow.glade:1624 ui/MainWindow.glade:1663
+msgid "720"
+msgstr "720"
+
+#: ui/MainWindow.glade:1651
+msgid "Width"
+msgstr "عرض"
+
+#: ui/MainWindow.glade:1698
+msgid "Display Density"
+msgstr "كثافة العرض"
+
+#: ui/MainWindow.glade:1727
+msgid "160"
+msgstr "160"
+
+#: ui/MainWindow.glade:1774
+msgid "Name"
+msgstr "اسم"
+
+#: ui/MainWindow.glade:1801
+msgid "Keyboard"
+msgstr "لوحة المفاتيح"
+
+#: ui/MainWindow.glade:1840
+msgid "Gpu"
+msgstr "GPU"
+
+#: ui/MainWindow.glade:1879
+msgid "SD Card"
+msgstr "بطاقة الذاكرة"
+
+#: ui/MainWindow.glade:1917
+msgid "Gsm Mode"
+msgstr "وضع جي إس إم"
+
+#: ui/MainWindow.glade:1946
+msgid "CPU Core"
+msgstr "وحدة المعالجة المركزية الأساسية"
+
+#: ui/MainWindow.glade:2005
+msgid "Orientation"
+msgstr "توجيه"
+
+#: ui/MainWindow.glade:2020
+msgid "Landscape"
+msgstr "منظر جمالي"
+
+#: ui/MainWindow.glade:2035
+msgid "Portrait"
+msgstr "لَوحَة"
+
+#: ui/MainWindow.glade:2115
+msgid "box_set_properties"
+msgstr "box_set_properties"
+
+#: ui/MainWindow.glade:2177
+msgid "Detial"
+msgstr "ديتيال"
+
+#: ui/MainWindow.glade:2218
+msgid "box_wait"
+msgstr "مربع_انتظر"
+
+#: ui/MainWindow.glade:2235
+msgid "Pardus Android Emulator"
+msgstr "محاكي Pardus Android"
+
+#: src/MainWindow.py:51
+msgid "Your CPU isn't support virtualization"
+msgstr "وحدة المعالجة المركزية الخاصة بك لا تدعم الظاهرية"
+
+#: src/MainWindow.py:305 src/MainWindow.py:307
+msgid "Please type different name"
+msgstr "الرجاء كتابة اسم مختلف"
+
+#: src/MainWindow.py:316 src/MainWindow.py:318
+msgid "Please don't type whitespace"
+msgstr "من فضلك لا تكتب مسافة بيضاء"
+
+#: src/MainWindow.py:323 src/MainWindow.py:325
+msgid "Please don't type spacial character(.*/şüİ~)"
+msgstr "من فضلك لا تكتب حرف مكاني (. * / şüİ ~)"
+
+#: src/MainWindow.py:369 src/MainWindow.py:370
+msgid "Waiting to get andorid sdk list..."
+msgstr "في انتظار الحصول على قائمة andorid sdk ..."

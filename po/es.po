@@ -1,0 +1,283 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-31 19:22+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ui/MainWindow.glade:18
+msgid ""
+"Bu program kesinlikle hiçbir garanti vermiyor.\n"
+"Ayrıntılar için <a href=\"https://www.gnu.org/licenses/gpl-3.0.html\">GNU Genel Kamu Lisansı, sürüm 3 ya da sonrası</a> bağlantısına bakın."
+msgstr "Bu program kesinlikle hiçbir garanti vermiyor.\n"
+
+#: ui/MainWindow.glade:55
+msgid "Info"
+msgstr "Información"
+
+#: ui/MainWindow.glade:74
+msgid "Ok"
+msgstr "De acuerdo"
+
+#: ui/MainWindow.glade:101
+msgid "Alert"
+msgstr "Alerta"
+
+#: ui/MainWindow.glade:115
+msgid "sdk manager not in system"
+msgstr "SDK Manager no está en el sistema"
+
+#: ui/MainWindow.glade:129
+msgid "Accept Terms"
+msgstr "Aceptar los terminos"
+
+#: ui/MainWindow.glade:144
+msgid "No"
+msgstr "No"
+
+#: ui/MainWindow.glade:158
+msgid "Yes"
+msgstr "Sí"
+
+#: ui/MainWindow.glade:185
+msgid ""
+"Your system dosn't have sdk manager. \n"
+"Do you want to install it?"
+msgstr ""
+"Su sistema no tiene SDK Manager.\n"
+"¿Desea instalarlo? "
+
+#: ui/MainWindow.glade:583
+msgid "Virtual Device List"
+msgstr "Lista de dispositivos virtuales"
+
+#: ui/MainWindow.glade:644
+msgid "Properties"
+msgstr "Propiedades"
+
+#: ui/MainWindow.glade:678
+msgid "Ram: "
+msgstr "RAM:"
+
+#: ui/MainWindow.glade:693 ui/MainWindow.glade:734 ui/MainWindow.glade:775
+#: ui/MainWindow.glade:816 ui/MainWindow.glade:857 ui/MainWindow.glade:915
+#: ui/MainWindow.glade:956 ui/MainWindow.glade:997 ui/MainWindow.glade:1038
+#: ui/MainWindow.glade:1079 ui/MainWindow.glade:2191
+msgid "None"
+msgstr "Ninguno"
+
+#: ui/MainWindow.glade:719
+msgid "Disk Partion: "
+msgstr "Partición de disco:"
+
+#: ui/MainWindow.glade:760
+msgid "Height: "
+msgstr "Altura:"
+
+#: ui/MainWindow.glade:801
+msgid "Width: "
+msgstr "Ancho:"
+
+#: ui/MainWindow.glade:842
+msgid "Display Density: "
+msgstr "Densidad de visualización:"
+
+#: ui/MainWindow.glade:900
+msgid "Keyboard: "
+msgstr "Teclado:"
+
+#: ui/MainWindow.glade:941
+msgid "Gpu: "
+msgstr "GPU:"
+
+#: ui/MainWindow.glade:982
+msgid "SD Card: "
+msgstr "Tarjeta SD:"
+
+#: ui/MainWindow.glade:1023
+msgid "Gsm Mode: "
+msgstr "Modo GSM:"
+
+#: ui/MainWindow.glade:1064
+msgid "Cpu: "
+msgstr "UPC:"
+
+#: ui/MainWindow.glade:1147
+msgid "New Virtual Android"
+msgstr "Nuevo Android virtual"
+
+#: ui/MainWindow.glade:1161
+msgid "Edit"
+msgstr "Editar"
+
+#: ui/MainWindow.glade:1175
+msgid "Delete"
+msgstr "Borrar"
+
+#: ui/MainWindow.glade:1189
+msgid "Start"
+msgstr "Comenzar"
+
+#: ui/MainWindow.glade:1217
+msgid "Factory Setting"
+msgstr "Ajuste de fábrica"
+
+#: ui/MainWindow.glade:1231
+msgid "Stop"
+msgstr "Detener"
+
+#: ui/MainWindow.glade:1245
+msgid "Force Stop"
+msgstr "Parada forzosa"
+
+#: ui/MainWindow.glade:1267
+msgid "box_main"
+msgstr "caja_principal"
+
+#: ui/MainWindow.glade:1313
+msgid "Device Type"
+msgstr "Tipo de dispositivo"
+
+#: ui/MainWindow.glade:1323
+msgid "Google"
+msgstr "Google"
+
+#: ui/MainWindow.glade:1339
+msgid "Play Store"
+msgstr "Tienda de juegos"
+
+#: ui/MainWindow.glade:1369
+msgid "Android Sdk Version"
+msgstr "Versión SDK de Android"
+
+#: ui/MainWindow.glade:1403 ui/MainWindow.glade:2070
+msgid "Back"
+msgstr "Atrás"
+
+#: ui/MainWindow.glade:1418 ui/MainWindow.glade:2085
+msgid "Next"
+msgstr "Próximo"
+
+#: ui/MainWindow.glade:1448
+msgid "box_android_chose"
+msgstr "box_android_chose"
+
+#: ui/MainWindow.glade:1478
+msgid "Ram"
+msgstr "RAM"
+
+#: ui/MainWindow.glade:1507
+msgid "2048"
+msgstr "2048"
+
+#: ui/MainWindow.glade:1543
+msgid "Disk Partion"
+msgstr "Partición de disco"
+
+#: ui/MainWindow.glade:1572
+msgid "20"
+msgstr "20"
+
+#: ui/MainWindow.glade:1612
+msgid "Height"
+msgstr "Altura"
+
+#: ui/MainWindow.glade:1624 ui/MainWindow.glade:1663
+msgid "720"
+msgstr "720"
+
+#: ui/MainWindow.glade:1651
+msgid "Width"
+msgstr "Ancho"
+
+#: ui/MainWindow.glade:1698
+msgid "Display Density"
+msgstr "Densidad de visualización"
+
+#: ui/MainWindow.glade:1727
+msgid "160"
+msgstr "160"
+
+#: ui/MainWindow.glade:1774
+msgid "Name"
+msgstr "Nombre"
+
+#: ui/MainWindow.glade:1801
+msgid "Keyboard"
+msgstr "Teclado"
+
+#: ui/MainWindow.glade:1840
+msgid "Gpu"
+msgstr "GPU"
+
+#: ui/MainWindow.glade:1879
+msgid "SD Card"
+msgstr "Tarjeta SD"
+
+#: ui/MainWindow.glade:1917
+msgid "Gsm Mode"
+msgstr "Modo GSM"
+
+#: ui/MainWindow.glade:1946
+msgid "CPU Core"
+msgstr "Núcleo de la CPU"
+
+#: ui/MainWindow.glade:2005
+msgid "Orientation"
+msgstr "Orientación"
+
+#: ui/MainWindow.glade:2020
+msgid "Landscape"
+msgstr "Paisaje"
+
+#: ui/MainWindow.glade:2035
+msgid "Portrait"
+msgstr "Retrato"
+
+#: ui/MainWindow.glade:2115
+msgid "box_set_properties"
+msgstr "box_set_propiedades"
+
+#: ui/MainWindow.glade:2177
+msgid "Detial"
+msgstr "Detalle"
+
+#: ui/MainWindow.glade:2218
+msgid "box_wait"
+msgstr "caja_espera"
+
+#: ui/MainWindow.glade:2235
+msgid "Pardus Android Emulator"
+msgstr "Emulador de Android Pardus"
+
+#: src/MainWindow.py:51
+msgid "Your CPU isn't support virtualization"
+msgstr "Su CPU no es compatible con la virtualización"
+
+#: src/MainWindow.py:305 src/MainWindow.py:307
+msgid "Please type different name"
+msgstr "Por favor escriba un nombre diferente"
+
+#: src/MainWindow.py:316 src/MainWindow.py:318
+msgid "Please don't type whitespace"
+msgstr "Por favor, no escriba espacios en blanco"
+
+#: src/MainWindow.py:323 src/MainWindow.py:325
+msgid "Please don't type spacial character(.*/şüİ~)"
+msgstr "No escriba caracteres espaciales (.*/şüİ~)"
+
+#: src/MainWindow.py:369 src/MainWindow.py:370
+msgid "Waiting to get andorid sdk list..."
+msgstr "Esperando obtener la lista SDK de Android..."
