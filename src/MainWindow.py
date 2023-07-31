@@ -280,7 +280,9 @@ class MainWindow(Gtk.Window):
         if output == "":
             val=False
             self.active_button(val)
+            self.btn_new_virt_android.set_sensitive(True)
             self.btn_stop.set_sensitive(val)
+        
 
     def fill_cpu_cores(self):
         self.fill_cmb(self.cmb_cpu, range(1, os.cpu_count()+1))
@@ -369,19 +371,19 @@ class MainWindow(Gtk.Window):
         self.lb_dialog_wait_status = _("Waiting to get andorid sdk list...")
         self.lb_subpro_output = _("Waiting to get andorid sdk list...")
         self.stck_main.set_visible_child_name("box_wait")
-        self.installer.get_android_list([self.fill_sdks])
+        self.installer.get_android_list([self.fill_sdks,lambda: self.active_button(True)])
 
     def on_btn_force_stop_clicked(self, b):
-        self.active_button(True)
         self.processes.stop_emulator()
+        self.active_button(True)
 
     def on_btn_stop_clicked(self, b):
-        self.active_button(True)
         self.processes.stop_emulator()
+        self.active_button(True)
 
     def on_btn_start_clicked(self, b):
-        self.active_button(False)
         self.processes.run_avd()
+        self.active_button(False)
 
     def on_btn_edit_clicked(self, b):
         self.is_main = False

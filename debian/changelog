@@ -1,3 +1,16 @@
+pardus-android-emulator (1.3) stable; urgency=medium
+
+  [ Muhammet Halak ]
+  * fixed sdk selection error the first time 
+  * fixed sdk filling error
+  * added factory setting button for delete user data
+  * fixed button activity problem at startup
+  * added new sdkmanager checking level
+  * updated checking kvm virtualization status
+
+
+ -- Muhammet Halak <halakmuhammet145@gmail.com>  Thu, 31 Jul 2023 20:03:13 +0300
+
 pardus-android-emulator (1.2) stable; urgency=medium
 
   [ Muhammet Halak ]
