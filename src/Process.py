@@ -81,6 +81,13 @@ class Processes:
 
         if os.path.exists(f"{co.HOME}/.android-emulator/userdata/{name}"):
             shutil.rmtree(f"{co.HOME}/.android-emulator/userdata/{name}")
+    
+    def delete_user_data(self):
+        name = co.avd_name
+        avd_dir = f"{co.HOME}/.android-emulator/userdata/{name}"
+        if os.path.exists(avd_dir):
+            shutil.rmtree(avd_dir)
+            os.makedirs(avd_dir)
 
     def go_to_page(self, page):
         GLib.idle_add(self.change_stack_page, page)
@@ -95,14 +102,4 @@ class Processes:
         del command_runner
 
     def check_virtualization_support(self):
-        intel_path = "/sys/module/kvm_intel/parameters/nested"
-        amd_path = "/sys/module/kvm_amd/parameters/nested"
-
-        is_support = ""
-        if os.path.exists(amd_path):
-            with open(amd_path, "r") as amd_file:
-                is_support = amd_file.read().strip()
-        elif os.path.exists(intel_path):
-            with open(intel_path, "r") as intel_file:
-                is_support = intel_file.read().strip()
-        return True if is_support == "y" or is_support == "1" else False
+        return os.path.exists("/dev/kvm")

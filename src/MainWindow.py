@@ -186,6 +186,7 @@ class MainWindow(Gtk.Window):
         self.btn_start: Gtk.Button = self.builder.get_object("btn_start")
         self.btn_edit: Gtk.Button = self.builder.get_object("btn_edit")
         self.btn_delete: Gtk.Button = self.builder.get_object("btn_delete")
+        self.btn_delete_data: Gtk.Button = self.builder.get_object("btn_delete_data")
         self.scr_window: Gtk.ScrolledWindow = self.builder.get_object(
             "scr_window")
         self.lst_virt_mach: Gtk.ListBox = self.builder.get_object(
@@ -271,19 +272,15 @@ class MainWindow(Gtk.Window):
         self.btn_new_virt_android.set_sensitive(val)
         self.btn_edit.set_sensitive(val)
         self.btn_delete.set_sensitive(val)
+        self.btn_delete_data.set_sensitive(val)
         self.btn_start.set_sensitive(val)
         self.btn_stop.set_sensitive(not val)
 
     def avd_empty_btn(self, output):
-        if output != "":
-            val = True
-        else:
-            val = False
-        self.btn_edit.set_sensitive(val)
-        self.btn_delete.set_sensitive(val)
-        self.btn_start.set_sensitive(val)
-        self.btn_force_stop.set_sensitive(val)
-        self.btn_stop.set_sensitive(val)
+        if output == "":
+            val=False
+            self.active_button(val)
+            self.btn_stop.set_sensitive(val)
 
     def fill_cpu_cores(self):
         self.fill_cmb(self.cmb_cpu, range(1, os.cpu_count()+1))
@@ -439,6 +436,9 @@ class MainWindow(Gtk.Window):
 
     def on_btn_and_chose_back_clicked(self, b):
         self.stck_main.set_visible_child_name("box_main")
+
+    def on_btn_delete_data_clicked(self, b):
+        self.processes.delete_user_data()
 
     def on_dialog_info_destroy(self, d):
         if not self.is_virt_active:

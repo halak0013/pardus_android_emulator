@@ -29,7 +29,7 @@ class Installer:
         self.downloader = None
 
     def check_sdkm(self):
-        if os.path.exists(co.SDK+"/cmdline-tools/latest/bin/sdkmanager"):
+        if os.path.exists(co.SDK+"/cmdline-tools/latest/bin/sdkmanager") and os.path.exists(co.SDK+"/tools"):
             return True
         else:
             if os.path.exists(co.HOME+"/.android-emulator"):
@@ -48,13 +48,14 @@ class Installer:
 
     async def main(self):
         command_runner = CommandRunner(
-            co.cmd_install_sdk_manger, fun_with_output=[self.get_android_list, self.fill_sdk])
+            co.cmd_install_sdk_manger, fun_with_output=[self.get_android_list])
         await self.downloader.download_file("/tmp/cmdline-tools.zip", "/tmp/cmdline-tools.zip",
                                             co.SDK, f_update=command_runner.run)
         # ? install sdk manager
         os.makedirs(co.HOME+"/.android-emulator/userdata/")
 
     def get_android_list(self, update_sdk_cmb):
+        update_sdk_cmb = [self.fill_sdk] if not isinstance(update_sdk_cmb,list) else update_sdk_cmb
         command_runner = CommandRunner(
             co.cmd_system_image, fun_with_output=[self.fill_android_sdk], 
             fun_with_parameters=update_sdk_cmb+[
